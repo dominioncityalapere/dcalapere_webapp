@@ -7,17 +7,26 @@ export const MobileMenuBgColor = "#121212";
 export const BorderLineColor = "rgba(158, 179, 194, 0.2)";
 
 
+interface MainMenuProps {
+  $isScrolled: boolean;
+}
+
+export const NavBarContainer = styled.div<MainMenuProps>`
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: ${(props) => props.$isScrolled ? MainMenuBgColor : "transparent"};
+  backdrop-filter: ${(props) => (props.$isScrolled ? "blur(10px)" : "none")};
+  -webkit-backdrop-filter: ${(props) => props.$isScrolled ? "blur(10px)" : "none"};
+`;
+
 export const MainMenu = styled.div`
-  /* MOBILE (Default) */
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
   font-size: 0.875rem;
-  background-color: ${MainMenuBgColor};
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid ${BorderLineColor};
 
   @media (min-width: 768px) {
     justify-content: space-between;

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import dc_logo_white from "../assets/dc_logo_white.png";
 import { Menu } from "lucide-react";
 import {
+  NavBarContainer,
   TextColorW,
   MainMenu,
   MenuList,
@@ -25,6 +26,7 @@ const NavBar = () => {
   const buttonRef = useRef<SVGSVGElement>(null);
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Close menu if clicked outside
   useEffect(() => {
@@ -44,8 +46,17 @@ const NavBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <>
+    <NavBarContainer $isScrolled={isScrolled}>
       <MainMenu>
         <MenuLogo>
           <a
@@ -86,7 +97,7 @@ const NavBar = () => {
           <A href="#">
             <GiveButton
               style={{
-                border: "0.1rem solid white",
+                border: `0.1rem solid ${TextColorW}`,
                 borderRadius: "3rem",
                 padding: "0.3rem 0.8rem 0.3rem 0.8rem",
               }}
@@ -100,7 +111,7 @@ const NavBar = () => {
               style={{
                 backgroundColor: TextColorW,
                 color: PrimaryColor,
-                padding: "0.3rem 0.8rem 0.3rem 0.8rem",
+                padding: "0.2rem 0.8rem 0.2rem 0.8rem",
                 borderRadius: "3rem",
               }}
             >
@@ -114,7 +125,7 @@ const NavBar = () => {
             <A href="#">
               <GiveButton
                 style={{
-                  border: "0.1rem solid white",
+                  border: `0.1rem solid ${TextColorW}`,
                   borderRadius: "3rem",
                   padding: "0.3rem 0.8rem 0.3rem 0.8rem",
                 }}
@@ -126,7 +137,7 @@ const NavBar = () => {
               style={{
                 backgroundColor: TextColorW,
                 color: PrimaryColor,
-                padding: "0.3rem 0.8rem 0.3rem 0.8rem",
+                padding: "0.2rem 0.8rem 0.2rem 0.8rem",
                 borderRadius: "3rem",
               }}
             >
@@ -204,7 +215,7 @@ const NavBar = () => {
           </MobileMenuContent>
         </MobileMenuWrapper>
       )}
-    </>
+    </NavBarContainer>
   );
 };
 
