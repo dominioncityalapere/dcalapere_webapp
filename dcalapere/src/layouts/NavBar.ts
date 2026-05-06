@@ -55,7 +55,7 @@ export const MobileMenuContent = styled.div`
   width: 100%;
   padding: 1rem 1rem 1.25rem 1rem;
   text-align: left;
-  margin: 3.5rem 0 0 0;
+  margin: 3.3rem 0 0 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -69,7 +69,7 @@ export const MobileMenuContent = styled.div`
   @media (min-width: 768px) {
     border-bottom: 0.1rem solid ${BorderLineColor};
     border-top: 0.1rem solid ${BorderLineColor};
-    margin: 4rem 0 0 0;
+    margin: 3.6rem 0 0 0;
   }
 `;
 
