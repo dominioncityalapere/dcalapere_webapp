@@ -1,4 +1,4 @@
-import { MoveDown, Play, Rows } from "lucide-react";
+import { MoveDown, Play } from "lucide-react";
 import { motion } from "motion/react";
 import {
   BgImage,
