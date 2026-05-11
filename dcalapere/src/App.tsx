@@ -2,6 +2,7 @@ import './App.css'
 import NavBar from './layouts/NavBar.tsx'
 import HeroSection from './sections/HeroSection.tsx'
 import ServiceTimeSection from './sections/ServiceTimeSection.tsx'
+import DailyDevotional from './sections/DailyDevotional.tsx'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <main>
         <HeroSection />
         <ServiceTimeSection />
+        <DailyDevotional />
       </main>
     </>
   );
