@@ -71,6 +71,10 @@ async def fetch_messages():
     return []
 
 
+@app.route("/health")
+def health():
+    return {"status": "ok"}, 200
+
 @app.route("/messages", methods=["GET"])
 def get_messages():
     # check for new messages every time the page is refreshed
