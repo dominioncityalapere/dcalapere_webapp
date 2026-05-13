@@ -88,21 +88,21 @@ export const ServiceContent = styled.div`
 `;
 
 export const PlanButton = styled.div`
-  font-size: 0.7rem;
-  padding: 0.35rem 0.6rem 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
   margin-top: 2rem;
   transition: all 0.3s ease;
 
   @media (min-width: 768px) {
     font-size: 1rem;
-    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
-    width: 15vh;
+    padding: 0.5rem 2rem;
+    width: fit-content;
   }
 
   &:hover {
     background-color: ${WhiteColor} !important;
     color: ${PrimaryColor} !important;
-    border: 0.11rem solid ${PrimaryColor};
+    border: 0.15rem solid ${PrimaryColor};
   }
 `;
 
