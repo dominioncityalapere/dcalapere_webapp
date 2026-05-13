@@ -26,77 +26,78 @@ const DailyDevotional = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  const bibleMap = {
-    gen: "Genesis",
-    ex: "Exodus",
-    lev: "Leviticus",
-    num: "Numbers",
-    deut: "Deuteronomy",
-    josh: "Joshua",
-    judg: "Judges",
-    ruth: "Ruth",
-    "1 sam": "First Samuel",
-    "2 sam": "Second Samuel",
-    "1 kings": "First Kings",
-    "2 kings": "Second Kings",
-    "1 chronicles": "First Chronicle",
-    "2 chronicles": "Second Chronicle",
-    ezra: "Ezra",
-    nehemiah: "Nehemiah",
-    esther: "Esther",
-    job: "Job",
-    ps: "Psalms",
-    prov: "Proverbs",
-    eccl: "Ecclesiastes",
-    isa: "Isaiah",
-    jer: "Jeremiah",
-    lam: "Lamentation",
-    ezek: "Ezekiel",
-    dan: "Daniel",
-    hos: "Hosea",
-    joel: "Joel",
-    amos: "Amos",
-    zech: "Zechariah",
-    mal: "Malachi",
-    matt: "Matthew",
-    mark: "Mark",
-    luke: "Luke",
-    jn: "John",
-    acts: "Acts",
-    rom: "Romans",
-    cor: "Corinthians",
-    gal: "Galatians",
-    eph: "Ephesians",
-    phil: "Philippians",
-    col: "Colossians",
-    thess: "Thessalonians",
-    tim: "Timothy",
-    tit: "Titus",
-    phlm: "Philemon",
-    heb: "Hebrews",
-    james: "James",
-    "1pet": "First Peter",
-    "2pet": "Second Peter",
-    "1jn": "First John",
-    "2jn": "Second John",
-    "3jn": "Third John",
-    rev: "Revelation",
-  };
-
-  const expandBibleText = (text: string) => {
-    let result = text.toLowerCase();
-
-    Object.entries(bibleMap).forEach(([shortForm, fullName]) => {
-      const regex = new RegExp(`\\b${shortForm}\\b`, "gi");
-      result = result.replace(regex, fullName);
-    });
-
-    return result;
-  };
-
   const speakText = (text: string) => {
     // stop current speech before starting another
     window.speechSynthesis.cancel();
+
+    const bibleMap = {
+      gen: "Genesis",
+      ex: "Exodus",
+      lev: "Leviticus",
+      num: "Numbers",
+      deut: "Deuteronomy",
+      josh: "Joshua",
+      judg: "Judges",
+      ruth: "Ruth",
+      "1 sam": "First Samuel",
+      "2 sam": "Second Samuel",
+      "1 kings": "First Kings",
+      "2 kings": "Second Kings",
+      "2kings": "Second Kings",
+      "1 chronicles": "First Chronicle",
+      "2 chronicles": "Second Chronicle",
+      ezra: "Ezra",
+      nehemiah: "Nehemiah",
+      esther: "Esther",
+      job: "Job",
+      ps: "Psalms",
+      prov: "Proverbs",
+      eccl: "Ecclesiastes",
+      isa: "Isaiah",
+      jer: "Jeremiah",
+      lam: "Lamentation",
+      ezek: "Ezekiel",
+      dan: "Daniel",
+      hos: "Hosea",
+      joel: "Joel",
+      amos: "Amos",
+      zech: "Zechariah",
+      mal: "Malachi",
+      matt: "Matthew",
+      mark: "Mark",
+      luke: "Luke",
+      jn: "John",
+      acts: "Acts",
+      rom: "Romans",
+      cor: "Corinthians",
+      gal: "Galatians",
+      eph: "Ephesians",
+      phil: "Philippians",
+      col: "Colossians",
+      thess: "Thessalonians",
+      tim: "Timothy",
+      tit: "Titus",
+      phlm: "Philemon",
+      heb: "Hebrews",
+      james: "James",
+      "1pet": "First Peter",
+      "2pet": "Second Peter",
+      "1jn": "First John",
+      "2jn": "Second John",
+      "3jn": "Third John",
+      rev: "Revelation",
+    };
+
+    const expandBibleText = (text: string) => {
+      let result = text.toLowerCase();
+
+      Object.entries(bibleMap).forEach(([shortForm, fullName]) => {
+        const regex = new RegExp(`\\b${shortForm}\\b`, "gi");
+        result = result.replace(regex, fullName);
+      });
+
+      return result;
+    };
 
     const cleanedBibleText = expandBibleText(text);
 

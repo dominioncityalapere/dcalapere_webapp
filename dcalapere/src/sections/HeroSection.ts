@@ -91,14 +91,13 @@ export const HeroButton = styled.div`
 `;
 
 export const HeroGiveButton = styled.div`
-  font-size: 0.7rem;
-  padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
   transition: all 0.3s ease;
 
   @media (min-width: 768px) {
     font-size: 1rem;
-    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
-    // width: 100%;
+    padding: 0.5rem 2rem;
   }
 
   &:hover {
@@ -107,14 +106,13 @@ export const HeroGiveButton = styled.div`
 `;
 
 export const HeroPlanButton = styled.div`
-  font-size: 0.7rem;
-  padding: 0.35rem 0.6rem 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
   transition: all 0.3s ease;
 
   @media (min-width: 768px) {
     font-size: 1rem;
-    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
-    width: auto;
+    padding: 0.5rem 2rem;
   }
 
   &:hover {
@@ -227,9 +225,9 @@ export const ThisWeekTime = styled.div`
 export const MoveDownArrow = styled.div`
   color: ${TextColorW};
   z-index: 50;
+  height: 75px;
 
   @media (min-width: 1024px) {
-    // margin-top: auto;
     height: 70px;
   }
 `;
