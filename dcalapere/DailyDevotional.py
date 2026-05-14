@@ -24,16 +24,14 @@ client = TelegramClient(
     api_hash
 )
 
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-loop.run_until_complete(client.connect())
-
 JSON_FILE = "messages.json"
 
 async def fetch_messages():
+    await client.connect()
+
     messages = []
 
-    # We fetch 10 to make sure we find a full one even if there is "noise"
+    # We fetch 5 to make sure we find a full one even if there is "noise"
     async for message in client.iter_messages("dominionmandate1", limit=5):
         if message.text:
             messages.append({
@@ -51,7 +49,7 @@ async def fetch_messages():
         if "DOMINION MANDATE DAILY DEVOTIONAL" in msg["text"]:
             combined_text = msg["text"]
 
-            # check next message
+            # check next message for continuation
             if i + 1 < len(messages):
                 next_msg = messages[i + 1]["text"]
 
@@ -64,11 +62,14 @@ async def fetch_messages():
                 "text": combined_text
             }
 
+  # save latest valid devotional
     if valid_devotionals:
          # Take the most recent complete devotional or the combined devotional
         data_to_save = [valid_devotionals]
+
         with open(JSON_FILE, "w", encoding="utf-8") as file:
             json.dump(data_to_save, file, ensure_ascii=False, indent=2)
+            
         return data_to_save
     
     # If no valid devotional found in last 10 posts, load the previous good one from the file.
@@ -86,7 +87,7 @@ def health():
 @app.route("/messages", methods=["GET"])
 def get_messages():
     # check for new messages every time the page is refreshed
-    messages = loop.run_until_complete(fetch_messages())
+    messages = asyncio.run(fetch_messages())
     return jsonify(messages)
 
 if __name__ == "__main__":
