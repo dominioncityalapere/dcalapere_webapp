@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+generate_session.py
 
 # Editor directories and files
 .vscode/*

@@ -3,6 +3,8 @@ import json
 import asyncio
 from dotenv import load_dotenv
 from telethon import TelegramClient
+from telethon.sync import TelegramClient
+from telethon.sessions import StringSession
 from flask import Flask, jsonify
 from flask_cors import CORS
 
@@ -14,7 +16,13 @@ CORS(app)
 api_id = os.getenv("TG_API_ID")
 api_hash = os.getenv("TG_API_HASH")
 
-client = TelegramClient("anon", int(api_id), api_hash)
+session = os.getenv("TG_SESSION")
+
+client = TelegramClient(
+    StringSession(session),
+    int(api_id),
+    api_hash
+)
 
 loop = asyncio.new_event_loop()
 asyncio.set_event_loop(loop)
