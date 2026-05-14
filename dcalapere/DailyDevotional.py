@@ -3,7 +3,6 @@ import json
 import asyncio
 from dotenv import load_dotenv
 from telethon import TelegramClient
-from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -27,7 +26,7 @@ client = TelegramClient(
 loop = asyncio.new_event_loop()
 asyncio.set_event_loop(loop)
 
-loop.run_until_complete(client.connect())
+loop.run_until_complete(client.start())
 
 JSON_FILE = "messages.json"
 
@@ -91,6 +90,7 @@ def health():
 @app.route("/messages", methods=["GET"])
 def get_messages():
     # check for new messages every time the page is refreshed
+    asyncio.set_event_loop(loop)
     messages = loop.run_until_complete(fetch_messages())
     return jsonify(messages)
 
