@@ -14,24 +14,20 @@ CORS(app)
 
 api_id = os.getenv("TG_API_ID")
 api_hash = os.getenv("TG_API_HASH")
-
 session = os.getenv("TG_SESSION")
 
-client = TelegramClient(
-    StringSession(session),
-    int(api_id),
-    api_hash
-)
+client = TelegramClient(StringSession(session), int(api_id), api_hash)
 
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
+# loop = asyncio.new_event_loop()
+# asyncio.set_event_loop(loop)
 
-loop.run_until_complete(client.start())
+# loop.run_until_complete(client.start())
 
 JSON_FILE = "messages.json"
 
 async def fetch_messages():
-
+    await client.start()
+    
     messages = []
 
     # We fetch 5 to make sure we find a full one even if there is "noise"
@@ -90,9 +86,7 @@ def health():
 @app.route("/messages", methods=["GET"])
 def get_messages():
     # check for new messages every time the page is refreshed
-    asyncio.set_event_loop(loop)
-    messages = loop.run_until_complete(fetch_messages())
-    return jsonify(messages)
+    return jsonify(asyncio.run(fetch_messages()))
 
 if __name__ == "__main__":
     app.run(port=5001, debug=True, use_reloader=False)
