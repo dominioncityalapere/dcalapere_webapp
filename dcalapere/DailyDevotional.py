@@ -24,10 +24,14 @@ client = TelegramClient(
     api_hash
 )
 
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+
+loop.run_until_complete(client.connect())
+
 JSON_FILE = "messages.json"
 
 async def fetch_messages():
-    await client.connect()
 
     messages = []
 
@@ -69,7 +73,7 @@ async def fetch_messages():
 
         with open(JSON_FILE, "w", encoding="utf-8") as file:
             json.dump(data_to_save, file, ensure_ascii=False, indent=2)
-            
+
         return data_to_save
     
     # If no valid devotional found in last 10 posts, load the previous good one from the file.
@@ -87,7 +91,7 @@ def health():
 @app.route("/messages", methods=["GET"])
 def get_messages():
     # check for new messages every time the page is refreshed
-    messages = asyncio.run(fetch_messages())
+    messages = loop.run_until_complete(fetch_messages())
     return jsonify(messages)
 
 if __name__ == "__main__":
