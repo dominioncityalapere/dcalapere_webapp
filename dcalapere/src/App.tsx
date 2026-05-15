@@ -30,8 +30,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route path="/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/dcalapere-login-26" element={<AdminLogin />} />
+        <Route path="/dcalapere-access-26" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );
