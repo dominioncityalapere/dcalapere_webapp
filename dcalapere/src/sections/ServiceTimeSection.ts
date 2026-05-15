@@ -4,11 +4,12 @@ export const PrimaryColor = "#072ac8";
 export const WhiteColor = "#FFFFFF";
 export const BlackColor = "#000000";
 export const YellowColor = "#CA8A04";
+export const OffWhiteColor = "#f9fafb";
 export const ServicesBgColor = "rgba(55, 92, 214, 0.27)";
 export const BorderLineColor = "rgba(173, 203, 224, 0.2)";
 
 export const BgColor = styled.div`
-  background-color: ${WhiteColor};
+  background-color: ${OffWhiteColor};
 `;
 
 export const ServiceContent = styled.div`
