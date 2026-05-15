@@ -1,11 +1,15 @@
 import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import NavBar from './layouts/NavBar.tsx'
 import HeroSection from './sections/HeroSection.tsx'
 import ServiceTimeSection from './sections/ServiceTimeSection.tsx'
 import DailyDevotional from './sections/DailyDevotional.tsx'
 import SermonSection from './sections/SermonSection.tsx'
+import AdminDashboard from './admin/AdminDashboard.tsx'
+import AdminLogin from './admin/AdminLogin.tsx';
 
-function App() {
+function HomePage() {
 
   return (
     <>
@@ -17,6 +21,19 @@ function App() {
         <SermonSection />
       </main>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
