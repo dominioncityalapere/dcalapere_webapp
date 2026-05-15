@@ -24,7 +24,7 @@ const AdminDashboard = () => {
       const { data } = await supabase.auth.getUser();
 
       if (!data.user) {
-        navigate("/login");
+        navigate("/dcalapere-login-26");
       }
     };
 
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
   const logout = async () => {
     await supabase.auth.signOut();
-    window.location.href = "/login";
+    window.location.href = "/dcalapere-access-26";
   };
 
   const handleSermonSubmit = async (e: React.FormEvent) => {

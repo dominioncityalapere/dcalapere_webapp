@@ -23,7 +23,7 @@ const AdminLogin = () => {
       return;
     }
 
-    navigate("/admin");
+    navigate("/dcalapere-access-26");
   };
 
   return (
