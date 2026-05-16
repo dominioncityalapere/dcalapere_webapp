@@ -21,7 +21,7 @@ export const A = styled.a`
 export const SermonBgColor = styled.div`
   background-color: ${OffWhiteColor};
   color: ${BlackColor};
-  padding: 4rem;
+  padding: 1rem;
   max-width: auto;
 
   .allSermonButton {
@@ -42,6 +42,10 @@ export const SermonBgColor = styled.div`
       background: ${PrimaryColor};
       border: none;
     }
+  }
+
+  @media (min-width: 768px) {
+    padding: 4rem;
   }
 `;
 

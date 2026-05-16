@@ -9,6 +9,7 @@ import SermonSection from './sections/SermonSection.tsx'
 import EventsSection from './sections/EventsSection.tsx'
 import AdminDashboard from './admin/AdminDashboard.tsx'
 import AdminLogin from './admin/AdminLogin.tsx';
+import WelcomeSection from './sections/WelcomeSection.tsx';
 
 function HomePage() {
 
@@ -21,6 +22,7 @@ function HomePage() {
         <DailyDevotional />
         <EventsSection />
         <SermonSection />
+        <WelcomeSection />
       </main>
     </>
   );
