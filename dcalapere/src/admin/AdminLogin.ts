@@ -12,13 +12,17 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
+
+  h1 {
+    padding-top: 4rem;
+  }
 
   form {
     display: grid;
     grid-template-columns: auto;
     gap: 1rem;
-    padding-top: 0.6rem;
+    padding-top: 1rem;
     width: 100%;
 
     @media (min-width: 768px) {

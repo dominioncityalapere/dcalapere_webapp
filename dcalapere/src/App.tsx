@@ -6,6 +6,7 @@ import HeroSection from './sections/HeroSection.tsx'
 import ServiceTimeSection from './sections/ServiceTimeSection.tsx'
 import DailyDevotional from './sections/DailyDevotional.tsx'
 import SermonSection from './sections/SermonSection.tsx'
+import EventsSection from './sections/EventsSection.tsx'
 import AdminDashboard from './admin/AdminDashboard.tsx'
 import AdminLogin from './admin/AdminLogin.tsx';
 
@@ -18,6 +19,7 @@ function HomePage() {
         <HeroSection />
         <ServiceTimeSection />
         <DailyDevotional />
+        <EventsSection />
         <SermonSection />
       </main>
     </>

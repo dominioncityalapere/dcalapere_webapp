@@ -114,30 +114,35 @@ const AdminDashboard = () => {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
 
         <input
           placeholder="Preacher"
           value={preacher}
           onChange={(e) => setPreacher(e.target.value)}
+          required
         />
 
         <input
           placeholder="Theme"
           value={theme}
           onChange={(e) => setTheme(e.target.value)}
+          required
         />
 
         <input
           placeholder="YouTube URL"
           value={youtube_url}
           onChange={(e) => setYoutubeUrl(e.target.value)}
+          required
         />
 
         <input
           placeholder="Thumbnail URL"
           value={thumbnail}
           onChange={(e) => setThumbnail(e.target.value)}
+          required
         />
 
         <button type="submit">Save Sermon</button>
@@ -152,30 +157,35 @@ const AdminDashboard = () => {
           placeholder="Title"
           value={eventTitle}
           onChange={(e) => setEventTitle(e.target.value)}
+          required
         />
 
         <input
           placeholder="Date"
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
+          required
         />
 
         <input
           placeholder="Time"
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
+          required
         />
 
         <input
           placeholder="Location"
           value={eventLocation}
           onChange={(e) => setEventLocation(e.target.value)}
+          required
         />
 
         <input
           placeholder="Thumbnail URL"
           value={eventThumbnail}
           onChange={(e) => setEventThumbnail(e.target.value)}
+          required
         />
 
         <button type="submit">Save Event</button>
