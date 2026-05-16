@@ -72,7 +72,7 @@ export const EventsContent = styled.div`
     gap: 0.7rem;
     text-align: left;
     color: ${WhiteColor};
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 2rem;
 
     @media (min-width: 1024px) {
@@ -82,7 +82,7 @@ export const EventsContent = styled.div`
   }
 
   .eventTitle {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     padding-bottom: 1.5rem;
     font-weight: bold;
 
@@ -94,19 +94,24 @@ export const EventsContent = styled.div`
   .numberDetail {
     display: flex;
     gap: 0.5rem;
+    font-size: 0.8rem;
+
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   .numberDetailSidebar {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding-bottom: 0.5rem;
     color: ${GreyColor};
     font-size: 0.8rem;
 
     @media (min-width: 768px) {
       flex-direction: row;
       font-size: 1rem;
+      padding-bottom: 0.5rem;
+      gap: 0.5rem;
     }
   }
 
@@ -140,12 +145,13 @@ export const EventsContent = styled.div`
     }
 
     .eventImageSidebar {
-      width: 10rem;
-      border-radius: 1rem;
+      width: 5rem;
+      border-radius: 0.5rem;
 
       @media (min-width: 768px) {
         width: 15rem;
         padding: 1rem;
+        border-radius: 2rem;
       }
     }
 
@@ -156,14 +162,16 @@ export const EventsContent = styled.div`
 `;
 
 export const LearnButton = styled.div`
-  width: fit-content;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
   color: ${PrimaryColor};
   background: ${WhiteColor};
   margin-top: 1rem;
+  font-size: 0.8rem;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const EventsButton = styled.div`

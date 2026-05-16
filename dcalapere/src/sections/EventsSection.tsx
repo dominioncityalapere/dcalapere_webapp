@@ -1,4 +1,4 @@
-import { Clock4, Calendar, MapPin, ChevronRight } from "lucide-react";
+import { Clock4, Calendar, MapPin, ChevronRight, TextAlignCenter } from "lucide-react";
 import eventImage from "../images/eventImage.jpg";
 
 import {
@@ -25,20 +25,19 @@ const EventsSection = () => {
             <p className="eventTitle">Easter Sunday Celebration</p>
 
             <div className="numberDetail">
-              <Calendar />
+              <Calendar style={{ width: "1rem" }} />
               <p className="eventDate">April 20, 2026</p>
             </div>
 
             <div className="numberDetail">
-              <Clock4 />
+              <Clock4 style={{ width: "1rem" }} />
               <p className="dayTime">8:30 AM - 11:30 AM</p>
             </div>
 
             <div className="numberDetail">
-              <MapPin />
+              <MapPin style={{ width: "1rem" }} />
               <p>
-                2nd Floor Tanterlizer Building, 3 Oluwakemi Street, Alapere
-                Roundabout, Lagos
+                2nd Floor Tanterlizer Building, 3 Oluwakemi Street, Alapere Roundabout, Lagos
               </p>
             </div>
 
@@ -52,7 +51,7 @@ const EventsSection = () => {
                   borderRadius: "3rem",
                 }}
               >
-                Learn More <ChevronRight />
+                Learn More <ChevronRight style={{ width: "1rem" }} />
               </LearnButton>
             </A>
           </div>
@@ -75,6 +74,7 @@ const EventsSection = () => {
                     <Calendar
                       style={{
                         color: PrimaryColor,
+                        width: "1rem",
                       }}
                     />
                     <p className="eventDate">April 20, 2026</p>
@@ -84,6 +84,7 @@ const EventsSection = () => {
                     <Clock4
                       style={{
                         color: PrimaryColor,
+                        width: "1rem",
                       }}
                     />
                     <p className="dayTime">8:30 AM - 11:30 AM</p>
@@ -113,6 +114,7 @@ const EventsSection = () => {
                     <Calendar
                       style={{
                         color: PrimaryColor,
+                        width: "1rem",
                       }}
                     />
                     <p className="eventDate">April 20, 2026</p>
@@ -122,6 +124,7 @@ const EventsSection = () => {
                     <Clock4
                       style={{
                         color: PrimaryColor,
+                        width: "1rem",
                       }}
                     />
                     <p className="dayTime">8:30 AM - 11:30 AM</p>
@@ -151,6 +154,7 @@ const EventsSection = () => {
                     <Calendar
                       style={{
                         color: PrimaryColor,
+                        width: "1rem",
                       }}
                     />
                     <p className="eventDate">April 20, 2026</p>
@@ -160,6 +164,7 @@ const EventsSection = () => {
                     <Clock4
                       style={{
                         color: PrimaryColor,
+                        width: "1rem",
                       }}
                     />
                     <p className="dayTime">8:30 AM - 11:30 AM</p>
