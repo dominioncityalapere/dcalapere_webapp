@@ -1,4 +1,4 @@
-import { Clock4, Calendar, MapPin, ChevronRight, TextAlignCenter } from "lucide-react";
+import { Clock4, Calendar, MapPin, ChevronRight } from "lucide-react";
 import eventImage from "../images/eventImage.jpg";
 
 import {
