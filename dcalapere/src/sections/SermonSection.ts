@@ -21,7 +21,7 @@ export const A = styled.a`
 export const SermonBgColor = styled.div`
   background-color: ${OffWhiteColor};
   color: ${BlackColor};
-  padding: 1rem;
+  padding: 3rem 2rem;
   max-width: auto;
 
   .allSermonButton {
