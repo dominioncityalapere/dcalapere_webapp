@@ -10,6 +10,7 @@ import EventsSection from './sections/EventsSection.tsx'
 import AdminDashboard from './admin/AdminDashboard.tsx'
 import AdminLogin from './admin/AdminLogin.tsx';
 import WelcomeSection from './sections/WelcomeSection.tsx';
+import Footer from './layouts/Footer.tsx'
 
 function HomePage() {
 
@@ -24,6 +25,7 @@ function HomePage() {
         <SermonSection />
         <WelcomeSection />
       </main>
+      <Footer />
     </>
   );
 }
