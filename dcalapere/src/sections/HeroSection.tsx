@@ -18,9 +18,12 @@ import {
 } from "./HeroSection";
 
 const HeroSection = () => {
-  // const handleScroll = (id) => {
-
-  // }
+  const scrollToNext = (): void => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -96,7 +99,7 @@ const HeroSection = () => {
           </ThisWeek>
         </HeroContent>
 
-        <MoveDownArrow>
+        <MoveDownArrow onClick={scrollToNext}>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{
@@ -105,7 +108,7 @@ const HeroSection = () => {
               ease: "easeInOut",
             }}
           >
-            <MoveDown style={{ color: TextColorW }} />
+            <MoveDown style={{ color: TextColorW, cursor: "pointer" }} />
           </motion.div>
         </MoveDownArrow>
       </BgImage>

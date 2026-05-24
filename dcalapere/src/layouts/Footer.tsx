@@ -137,4 +137,5 @@ const Footer = () => {
     </BgColor>
   );
 };
+
 export default Footer;

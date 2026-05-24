@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const PrimaryColor = "#072ac8";
 export const TextColorW = "#FFFFFF";
@@ -16,9 +17,18 @@ export const NavBarContainer = styled.div<MainMenuProps>`
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  background-color: ${(props) => props.$isScrolled ? MainMenuBgColor : "transparent"};
+  background-color: ${(props) =>
+    props.$isScrolled ? MobileMenuBgColor : "transparent"};
   backdrop-filter: ${(props) => (props.$isScrolled ? "blur(10px)" : "none")};
-  -webkit-backdrop-filter: ${(props) => props.$isScrolled ? "blur(10px)" : "none"};
+  -webkit-backdrop-filter: ${(props) =>
+    props.$isScrolled ? "blur(10px)" : "none"};
+`;
+
+export const A = styled(Link)`
+    color: ${TextColorW};
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 `;
 
 export const MainMenu = styled.div`
@@ -170,12 +180,6 @@ export const PlanButton = styled.span`
   }
 `;
 
-export const A = styled.a`
-  color: ${TextColorW};
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-`;
 
 export const MenuToggle = styled.div`
   @media (max-width: 768px) {
