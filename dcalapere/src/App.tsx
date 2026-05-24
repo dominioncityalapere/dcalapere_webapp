@@ -12,6 +12,9 @@ import AdminLogin from './admin/AdminLogin.tsx';
 import WelcomeSection from './sections/WelcomeSection.tsx';
 import Footer from './layouts/Footer.tsx'
 
+import AboutPage from './pages/AboutPage.tsx';
+import EventsPage from './pages/EventsPage.tsx'
+
 function HomePage() {
 
   return (
@@ -35,6 +38,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/events" element={<EventsPage />} />
 
         <Route path="/dcalapere-login-26" element={<AdminLogin />} />
         <Route path="/dcalapere-access-26" element={<AdminDashboard />} />

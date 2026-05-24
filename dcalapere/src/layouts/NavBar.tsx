@@ -7,8 +7,8 @@ import {
   MainMenu,
   MenuList,
   MenuListII,
-  A,
   IMG,
+  A,
   MenuLogo,
   MenuToggle,
   MobileMenuWrapper,
@@ -20,6 +20,7 @@ import {
   PlanButton,
 } from "./NavBar";
 
+
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -27,7 +28,7 @@ const NavBar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  
   // Close menu if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -59,8 +60,8 @@ const NavBar = () => {
     <NavBarContainer $isScrolled={isScrolled}>
       <MainMenu>
         <MenuLogo>
-          <a
-            href="#"
+          <A
+            to="/"
             style={{
               display: "flex",
               textDecoration: "none",
@@ -72,29 +73,29 @@ const NavBar = () => {
               <img src={dc_logo_white} alt="DC logo" />
             </IMG>
             Dominion City Alapere
-          </a>
+          </A>
         </MenuLogo>
 
         <MenuList>
           <span>
-            <A href="#">About</A>
+            <A to="/about">About</A>
           </span>
           <span>
-            <A href="#">Services</A>
+            <A to="/">Services</A>
           </span>
           <span>
-            <A href="#">Events</A>
+            <A to="/">Events</A>
           </span>
           <span>
-            <A href="#">Sermons</A>
+            <A to="/">Sermons</A>
           </span>
           <span>
-            <A href="#">Contact</A>
+            <A to="/">Contact</A>
           </span>
         </MenuList>
 
         <MenuListII>
-          <A href="#">
+          <A to="/">
             <GiveButton
               style={{
                 border: `0.1rem solid ${TextColorW}`,
@@ -106,12 +107,12 @@ const NavBar = () => {
             </GiveButton>
           </A>
 
-          <A href="#">
+          <A to="/">
             <PlanButton
               style={{
                 backgroundColor: TextColorW,
                 color: PrimaryColor,
-                padding: "0.2rem 0.8rem 0.2rem 0.8rem",
+                padding: "0.3rem 0.8rem 0.3rem 0.8rem",
                 borderRadius: "3rem",
               }}
             >
@@ -122,7 +123,7 @@ const NavBar = () => {
 
         <MenuToggle>
           <RemoveGPButton>
-            <A href="#">
+            <A to="/">
               <GiveButton
                 style={{
                   border: `0.1rem solid ${TextColorW}`,
@@ -141,7 +142,7 @@ const NavBar = () => {
                 borderRadius: "3rem",
               }}
             >
-              <A href="#">Plan Your Visit</A>
+              <A to="/">Plan Your Visit</A>
             </PlanButton>
           </RemoveGPButton>
 
@@ -167,25 +168,25 @@ const NavBar = () => {
           }}
         >
           <MobileMenuContent>
-            <A href="#" onClick={closeMenu}>
+            <A to="/about">
               <span>About</span>
             </A>
-            <A href="#" onClick={closeMenu}>
+            <A to="/" onClick={closeMenu}>
               <span>Services</span>
             </A>
-            <A href="#" onClick={closeMenu}>
+            <A to="/" onClick={closeMenu}>
               <span>Events</span>
             </A>
-            <A href="#" onClick={closeMenu}>
+            <A to="/" onClick={closeMenu}>
               <span>Sermons</span>
             </A>
-            <A href="#" onClick={closeMenu}>
+            <A to="/" onClick={closeMenu}>
               <span>Contact</span>
             </A>
 
             <MobileMenuContentBorder></MobileMenuContentBorder>
 
-            <A href="#" onClick={closeMenu}>
+            <A to="/" onClick={closeMenu}>
               <div
                 style={{
                   backgroundColor: PrimaryColor,
@@ -199,7 +200,7 @@ const NavBar = () => {
               </div>
             </A>
 
-            <A href="#" onClick={closeMenu}>
+            <A to="/" onClick={closeMenu}>
               <div
                 style={{
                   border: `0.1rem solid ${PrimaryColor}`,
