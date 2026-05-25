@@ -174,7 +174,7 @@ const NavBar = () => {
             <A to="/" onClick={closeMenu}>
               <span>Services</span>
             </A>
-            <A to="/" onClick={closeMenu}>
+            <A to="/events" onClick={closeMenu}>
               <span>Events</span>
             </A>
             <A to="/" onClick={closeMenu}>
