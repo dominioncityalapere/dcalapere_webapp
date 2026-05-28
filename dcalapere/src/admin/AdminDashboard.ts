@@ -6,13 +6,14 @@ export const OffWhiteColor = "#f9fafb";
 export const GreyColor = "#777777";
 export const BlackColor = "#000000";
 export const YellowColor = "#CA8A04";
+export const BorderLineColor = "rgba(158, 179, 194, 0.2)";
 
 export const AdminContainer = styled.div`
   background: ${PrimaryColor};
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100dvh;
+  min-height: 100dvh;
 
   form {
     display: grid;
@@ -29,6 +30,9 @@ export const AdminContainer = styled.div`
 
       .full {
         grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
       }
     }
 
@@ -38,6 +42,12 @@ export const AdminContainer = styled.div`
     }
   }
 
+  .border {
+    border: 0.3rem solid ${BorderLineColor};
+    width: 100%;
+    margin-top: 4rem;
+  }
+
   input {
     background-color: ${WhiteColor};
     color: ${BlackColor};
@@ -45,6 +55,31 @@ export const AdminContainer = styled.div`
     padding: 0.9rem 1rem;
     border-radius: 0.7rem;
     outline: none;
+    font-size: 1rem;
+    width:;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:focus {
+      border-color: #072ac8;
+      box-shadow: 0 0 0 3px rgba(7, 42, 200, 0.15);
+    }
+  }
+
+  .eventTitle {
+    width: 100%;
+  }
+
+  textarea {
+    background-color: ${WhiteColor};
+    color: ${BlackColor};
+    border: 0.1rem solid #d1d5db;
+    padding: 0.9rem 1rem;
+    border-radius: 0.7rem;
+    outline: none;
+    resize: none;
     font-size: 1rem;
 
     &::placeholder {

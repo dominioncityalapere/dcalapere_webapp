@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "../lib/supabase";
-import { AdminContainer, Header } from "../admin/AdminDashboard";
+import { AdminContainer, Header, WhiteColor } from "../admin/AdminDashboard";
 import { useNavigate } from "react-router-dom";
 import dc_logo_white from "../assets/dc_logo_white.png";
 
@@ -15,7 +15,10 @@ const AdminDashboard = () => {
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
   const [eventLocation, setEventLocation] = useState("");
-  const [eventThumbnail, setEventThumbnail] = useState("");
+  const [eventThumbnail, setEventThumbnail] = useState<File | null>(null);
+  const [eventDescription, setEventDescription] = useState("");
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const navigate = useNavigate();
 
@@ -62,10 +65,44 @@ const AdminDashboard = () => {
     setTheme("");
     setYoutubeUrl("");
     setThumbnail("");
+    setEventThumbnail(null);
   };
 
   const handleEventSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!eventThumbnail) return;
+
+    const MAX_FILE_SIZE = 2 * 1024 * 1024;
+
+    if (eventThumbnail.size > MAX_FILE_SIZE) {
+      alert("File must be less than 2MB");
+      return;
+    }
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+    if (!allowedTypes.includes(eventThumbnail.type)) {
+      alert("Only JPG, PNG, and WEBP allowed");
+      return;
+    }
+
+    const fileExt = eventThumbnail.name.split(".").pop();
+
+    const fileName = `${Date.now()}-${fileExt}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("events")
+      .upload(fileName, eventThumbnail);
+
+    if (uploadError) {
+      console.error(uploadError);
+      return;
+    }
+
+    const { data } = supabase.storage.from("events").getPublicUrl(fileName);
+
+    const imageUrl = data.publicUrl;
 
     const { error } = await supabase.from("events").insert([
       {
@@ -73,23 +110,29 @@ const AdminDashboard = () => {
         date: eventDate,
         time: eventTime,
         location: eventLocation,
-        thumbnail: eventThumbnail,
+        thumbnail: imageUrl,
+        description: eventDescription,
       },
     ]);
 
     if (error) {
       console.log(error);
-      alert("Failed to add event");
+      alert("Failed to uplaod event");
       return;
     }
 
-    alert("Event added");
+    alert("Event upload successfully");
 
     setEventTitle("");
     setEventDate("");
     setEventTime("");
     setEventLocation("");
-    setEventThumbnail("");
+    setEventDescription("");
+
+    if (eventTitle.trim().length > 30) {
+      alert("Title cannot exceed 30 characters");
+      return;
+    }
   };
 
   return (
@@ -104,7 +147,16 @@ const AdminDashboard = () => {
         </div>
       </Header>
 
-      <h1 style={{ paddingTop: "0.5rem" }}>Admin Dashboard</h1>
+      <h1
+        style={{
+          paddingTop: "0.5rem",
+          fontWeight: 800,
+          borderBottom: `0.2rem solid ${WhiteColor}`,
+          lineHeight: 1.3
+        }}
+      >
+        Admin Dashboard
+      </h1>
 
       <h2 style={{ paddingTop: "2rem" }}>Add Sermon</h2>
 
@@ -148,27 +200,34 @@ const AdminDashboard = () => {
         <button type="submit">Save Sermon</button>
       </form>
 
+      <div className="border"></div>
+
       {/* ADD EVENT */}
 
       <h2 style={{ paddingTop: "2rem" }}>Add Event</h2>
       <form onSubmit={handleEventSubmit}>
-        <input
-          className="full"
-          placeholder="Title"
-          value={eventTitle}
-          onChange={(e) => setEventTitle(e.target.value)}
-          required
-        />
+        <div className="full">
+          <input
+            className="eventTitle"
+            placeholder="Title"
+            value={eventTitle}
+            onChange={(e) => setEventTitle(e.target.value)}
+            maxLength={30}
+            required
+          />
+
+          <p>{eventTitle.length}/30</p>
+        </div>
 
         <input
-          placeholder="Date"
+          placeholder="Date (eg. 21 March 2026)"
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
           required
         />
 
         <input
-          placeholder="Time"
+          placeholder="Time (eg. 11:00 or 23:00)"
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
           required
@@ -182,9 +241,24 @@ const AdminDashboard = () => {
         />
 
         <input
-          placeholder="Thumbnail URL"
-          value={eventThumbnail}
-          onChange={(e) => setEventThumbnail(e.target.value)}
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            if (e.target.files?.[0]) {
+              setEventThumbnail(e.target.files[0]);
+            }
+          }}
+          required
+        />
+
+        <textarea
+          className="full"
+          placeholder="Description"
+          value={eventDescription}
+          onChange={(e) => setEventDescription(e.target.value)}
+          maxLength={150}
+          rows={3}
           required
         />
 
