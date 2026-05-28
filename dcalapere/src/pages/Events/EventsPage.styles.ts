@@ -84,7 +84,17 @@ export const EventContainer = styled.div`
 
         @media (min-width: 1024px) {
           border-radius: 2rem 0 0 2rem;
-          width: auto;
+          width: 75dvh;
+          height: auto;
+        }
+      }
+
+      .eventInfoFlex {
+        width: 100%;
+        box-sizing: border-box;
+
+        @media (min-width: 1024px) {
+          width: 75dvh;
         }
       }
 
