@@ -20,7 +20,6 @@ import {
   PlanButton,
 } from "./NavBar";
 
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -28,7 +27,7 @@ const NavBar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
+
   // Close menu if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
