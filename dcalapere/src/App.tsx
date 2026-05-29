@@ -1,22 +1,22 @@
-import './App.css'
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import NavBar from './layouts/NavBar.tsx'
-import HeroSection from './sections/HeroSection.tsx'
-import ServiceTimeSection from './sections/ServiceTimeSection.tsx'
-import DailyDevotional from './sections/DailyDevotional.tsx'
-import SermonSection from './sections/SermonSection.tsx'
-import EventsSection from './sections/EventsSection.tsx'
-import AdminDashboard from './admin/AdminDashboard.tsx'
-import AdminLogin from './admin/AdminLogin.tsx';
-import WelcomeSection from './sections/WelcomeSection.tsx';
-import Footer from './layouts/Footer.tsx'
+import NavBar from "./layouts/NavBar.tsx";
+import HeroSection from "./sections/HeroSection.tsx";
+import ServiceTimeSection from "./sections/ServiceTimeSection.tsx";
+import DailyDevotional from "./sections/DailyDevotional.tsx";
+import SermonSection from "./sections/SermonSection.tsx";
+import EventsSection from "./sections/EventsSection/EventsSection.tsx";
+import AdminDashboard from "./admin/AdminDashboard.tsx";
+import AdminLogin from "./admin/AdminLogin.tsx";
+import WelcomeSection from "./sections/WelcomeSection.tsx";
+import Footer from "./layouts/Footer.tsx";
 
-import AboutPage from './pages/AboutPage.tsx';
-import EventsPage from './pages/EventsPage.tsx'
+import ScrollToTop from "./components/ScrollToTop.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import EventsPage from "./pages/Events/EventsPage.tsx";
 
 function HomePage() {
-
   return (
     <>
       <NavBar />
@@ -36,6 +36,8 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
 
@@ -49,4 +51,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
