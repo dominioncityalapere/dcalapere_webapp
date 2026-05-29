@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import dc_logo_white from "../assets/dc_logo_white.png";
 import { Menu } from "lucide-react";
 import {
@@ -27,6 +28,7 @@ const NavBar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   // Close menu if clicked outside
   useEffect(() => {
@@ -55,6 +57,10 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleServicesClick = () => {
+    navigate("/#services");
+  };
+
   return (
     <NavBarContainer $isScrolled={isScrolled}>
       <MainMenu>
@@ -80,7 +86,9 @@ const NavBar = () => {
             <A to="/about">About</A>
           </span>
           <span>
-            <A to="/">Services</A>
+            <A to="/#services">
+              Services
+            </A>
           </span>
           <span>
             <A to="/events">Events</A>
@@ -170,7 +178,7 @@ const NavBar = () => {
             <A to="/about">
               <span>About</span>
             </A>
-            <A to="/" onClick={closeMenu}>
+            <A to="/#services" onClick={closeMenu}>
               <span>Services</span>
             </A>
             <A to="/events" onClick={closeMenu}>
