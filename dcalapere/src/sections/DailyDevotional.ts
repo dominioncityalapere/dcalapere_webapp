@@ -4,6 +4,7 @@ export const PrimaryColor = "#072ac8";
 export const WhiteColor = "#FFFFFF";
 export const BlackColor = "#000000";
 export const YellowColor = "#CA8A04";
+export const DevBgColor = "#121212";
 export const DevotionalContentBgColor = "rgba(255, 255, 255, 0.69)";
 
 export const A = styled.a`
@@ -19,7 +20,7 @@ export const A = styled.a`
 `;
 
 export const DevotionalBgColor = styled.div`
-  background-color: ${PrimaryColor};
+  background-color: ${DevBgColor};
   padding: 2rem;
 
   @media (min-width: 768px) {
@@ -118,17 +119,16 @@ export const DevotionalContent = styled.div`
     padding: 0.5rem 0.8rem;
     border-radius: 1rem;
     color: ${PrimaryColor};
+    border: 0.11rem solid ${WhiteColor};
 
     &:hover {
       background-color: transparent !important;
       color: ${WhiteColor} !important;
-      border: 0.11rem solid ${WhiteColor};
     }
 
     &:active {
       background-color: transparent !important;
       color: ${WhiteColor} !important;
-      border: 0.11rem solid ${WhiteColor};
     }
   }
 
