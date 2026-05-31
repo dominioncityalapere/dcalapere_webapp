@@ -10,7 +10,7 @@ import {
 
 const ServiceTimeSection = () => {
   return (
-    <BgColor>
+    <BgColor id="services">
       <ServiceContent>
         <p className="sectionTitle">Service Times</p>
         <p className="sectionSubTitle">

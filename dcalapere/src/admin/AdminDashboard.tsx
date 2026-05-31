@@ -135,6 +135,54 @@ const AdminDashboard = () => {
     }
   };
 
+  // Automatically logs out admin after 5 minutes of inactivity or when user leaves the tab
+  useEffect(() => {
+    let timeout: number;
+
+    const logoutUser = async () => {
+      await supabase.auth.signOut();
+
+      navigate("/dcalapere-login-26");
+    };
+
+    const resetTimer = () => {
+      clearTimeout(timeout);
+
+      timeout = window.setTimeout(
+        () => {
+          logoutUser();
+        },
+        5 * 60 * 1000,
+      );
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        logoutUser();
+      }
+    };
+
+    const events = ["mousemove", "keydown", "click", "touchstart"];
+
+    events.forEach((event) => {
+      window.addEventListener(event, resetTimer);
+    });
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    resetTimer();
+
+    return () => {
+      clearTimeout(timeout);
+
+      events.forEach((event) => {
+        window.removeEventListener(event, resetTimer);
+      });
+
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <AdminContainer style={{ padding: "2rem" }}>
       <Header>
@@ -152,7 +200,7 @@ const AdminDashboard = () => {
           paddingTop: "0.5rem",
           fontWeight: 800,
           borderBottom: `0.2rem solid ${WhiteColor}`,
-          lineHeight: 1.3
+          lineHeight: 1.3,
         }}
       >
         Admin Dashboard
