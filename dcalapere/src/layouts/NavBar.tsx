@@ -57,10 +57,6 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleServicesClick = () => {
-    navigate("/#services");
-  };
-
   return (
     <NavBarContainer $isScrolled={isScrolled}>
       <MainMenu>
@@ -86,9 +82,7 @@ const NavBar = () => {
             <A to="/about">About</A>
           </span>
           <span>
-            <A to="/#services">
-              Services
-            </A>
+            <A to="/#services">Services</A>
           </span>
           <span>
             <A to="/events">Events</A>
