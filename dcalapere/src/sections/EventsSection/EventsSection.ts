@@ -103,7 +103,8 @@ export const EventsContent = styled.div<EventSectionProps>`
     }
 
     @media (min-width: 1024px) {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
+      line-height: 1;
     }
   }
 
