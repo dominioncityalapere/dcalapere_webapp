@@ -3,13 +3,14 @@ import { supabase } from "../lib/supabase";
 import { AdminContainer, Header, WhiteColor } from "../admin/AdminDashboard";
 import { useNavigate } from "react-router-dom";
 import dc_logo_white from "../assets/dc_logo_white.png";
+import { createSermon } from "../services/sermons.service";
 
 const AdminDashboard = () => {
   const [title, setTitle] = useState("");
   const [preacher, setPreacher] = useState("");
   const [theme, setTheme] = useState("");
   const [youtube_url, setYoutubeUrl] = useState("");
-  const [thumbnail, setThumbnail] = useState("");
+  const [date, setDate] = useState("");
 
   const [eventTitle, setEventTitle] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -42,15 +43,13 @@ const AdminDashboard = () => {
   const handleSermonSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { error } = await supabase.from("sermons").insert([
-      {
-        title,
-        preacher,
-        theme,
-        youtube_url,
-        thumbnail,
-      },
-    ]);
+    const { error } = await createSermon({
+      theme,
+      title,
+      preacher,
+      date,
+      youtube_url: youtube_url,
+    });
 
     if (error) {
       console.log(error);
@@ -64,8 +63,7 @@ const AdminDashboard = () => {
     setPreacher("");
     setTheme("");
     setYoutubeUrl("");
-    setThumbnail("");
-    setEventThumbnail(null);
+    setDate("");
   };
 
   const handleEventSubmit = async (e: React.FormEvent) => {
@@ -218,16 +216,16 @@ const AdminDashboard = () => {
         />
 
         <input
-          placeholder="Preacher"
-          value={preacher}
-          onChange={(e) => setPreacher(e.target.value)}
+          placeholder="Theme"
+          value={theme}
+          onChange={(e) => setTheme(e.target.value)}
           required
         />
 
         <input
-          placeholder="Theme"
-          value={theme}
-          onChange={(e) => setTheme(e.target.value)}
+          placeholder="Preacher"
+          value={preacher}
+          onChange={(e) => setPreacher(e.target.value)}
           required
         />
 
@@ -239,13 +237,13 @@ const AdminDashboard = () => {
         />
 
         <input
-          placeholder="Thumbnail URL"
-          value={thumbnail}
-          onChange={(e) => setThumbnail(e.target.value)}
+          placeholder="Date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
           required
         />
 
-        <button type="submit">Save Sermon</button>
+        <button type="submit">Upload Sermon</button>
       </form>
 
       <div className="border"></div>
@@ -310,7 +308,7 @@ const AdminDashboard = () => {
           required
         />
 
-        <button type="submit">Save Event</button>
+        <button type="submit">Upload Event</button>
       </form>
     </AdminContainer>
   );
