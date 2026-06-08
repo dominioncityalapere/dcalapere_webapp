@@ -88,10 +88,10 @@ const NavBar = () => {
             <A to="/events">Events</A>
           </span>
           <span>
-            <A to="/">Sermons</A>
+            <A to="/sermons">Sermons</A>
           </span>
           <span>
-            <A to="/">Contact</A>
+            <A to="/contact">Contact</A>
           </span>
         </MenuList>
 
@@ -124,7 +124,7 @@ const NavBar = () => {
 
         <MenuToggle>
           <RemoveGPButton>
-            <A to="/">
+            <A to="/give">
               <GiveButton
                 style={{
                   border: `0.1rem solid ${TextColorW}`,
@@ -143,7 +143,7 @@ const NavBar = () => {
                 borderRadius: "3rem",
               }}
             >
-              <A to="/">Plan Your Visit</A>
+              <A to="/planyourvisit">Plan Your Visit</A>
             </PlanButton>
           </RemoveGPButton>
 
@@ -178,16 +178,16 @@ const NavBar = () => {
             <A to="/events" onClick={closeMenu}>
               <span>Events</span>
             </A>
-            <A to="/" onClick={closeMenu}>
+            <A to="/sermons" onClick={closeMenu}>
               <span>Sermons</span>
             </A>
-            <A to="/" onClick={closeMenu}>
+            <A to="/contact" onClick={closeMenu}>
               <span>Contact</span>
             </A>
 
             <MobileMenuContentBorder></MobileMenuContentBorder>
 
-            <A to="/" onClick={closeMenu}>
+            <A to="/planyourvisit" onClick={closeMenu}>
               <div
                 style={{
                   backgroundColor: PrimaryColor,
@@ -201,7 +201,7 @@ const NavBar = () => {
               </div>
             </A>
 
-            <A to="/" onClick={closeMenu}>
+            <A to="/give" onClick={closeMenu}>
               <div
                 style={{
                   border: `0.1rem solid ${PrimaryColor}`,
