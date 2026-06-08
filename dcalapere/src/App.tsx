@@ -15,6 +15,8 @@ import Footer from "./layouts/Footer.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import EventsPage from "./pages/Events/EventsPage.tsx";
+import SermonsPage from "./pages/Sermons/SermonsPage.tsx";
+import SermonDetails from "./pages/Sermons/SermonDetails.tsx"
 
 function HomePage() {
   return (
@@ -43,6 +45,8 @@ function App() {
 
         <Route path="/about" element={<AboutPage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/sermons" element={<SermonsPage />} />
+        <Route path="/sermons/:id" element={<SermonDetails />} />
 
         <Route path="/dcalapere-login-26" element={<AdminLogin />} />
         <Route path="/dcalapere-access-26" element={<AdminDashboard />} />
