@@ -20,7 +20,7 @@ export const A = styled(Link)`
   width: fit-content;
 `;
 
-export const AEvents = styled.a`
+export const AEvents = styled.div`
   text-decoration: none;
   cursor: pointer;
   text: center;
