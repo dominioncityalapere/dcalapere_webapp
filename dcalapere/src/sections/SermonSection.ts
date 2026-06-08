@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const PrimaryColor = "#072ac8";
 export const WhiteColor = "#FFFFFF";
@@ -8,7 +9,7 @@ export const BlackColor = "#000000";
 export const YellowColor = "#CA8A04";
 export const DevotionalContentBgColor = "rgba(255, 255, 255, 0.69)";
 
-export const A = styled.a`
+export const A = styled(Link)`
   color: ${WhiteColor};
   text-decoration: none;
   color: inherit;
@@ -24,9 +25,13 @@ export const SermonBgColor = styled.div`
   padding: 3rem 2rem;
   max-width: auto;
 
+  @media (min-width: 768px) {
+    padding: 4rem;
+  }
+
   .allSermonButton {
     width: fit-content;
-    border: 0.15rem solid ${PrimaryColor};
+    border: 0.1rem solid ${PrimaryColor};
     border-radius: 2rem;
     color: ${PrimaryColor};
     padding: 0.4rem 1rem;
@@ -40,13 +45,9 @@ export const SermonBgColor = styled.div`
     &:hover {
       color: ${WhiteColor};
       background: ${PrimaryColor};
-      border: none;
     }
   }
 
-  @media (min-width: 768px) {
-    padding: 4rem;
-  }
 `;
 
 export const SectionTitle = styled.div`
@@ -97,14 +98,17 @@ export const SermonBox = styled.div`
   .sermon-image-wrapper {
     position: relative;
     overflow: hidden;
+    height: 11rem;
+    width: 100%;
     border-radius: 2rem 2rem 0 0;
-  }
 
-  .sermonImg {
-    width: 20rem;
-    height: auto;
-    border-radius: 2rem 2rem 0 0;
-    display: block;
+    .sermonImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2rem 2rem 0 0;
+      display: block;
+    }
   }
 
   .sermonTheme {
@@ -135,8 +139,8 @@ export const SermonBox = styled.div`
   }
 
   .playButton {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
 
@@ -151,4 +155,8 @@ export const SermonBoxText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  .sermonTitle {
+    font-weight: bold;
+  }
 `;
