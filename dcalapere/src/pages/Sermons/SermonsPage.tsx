@@ -6,16 +6,15 @@ import { getSermonsSection } from "../../services/sermons.service";
 import type { SermonsType } from "./SermonsPage.types.ts";
 import { getYoutubeId } from "../../utils/youtube.ts";
 import { getYoutubeThumbnail } from "../../utils/youtubeThumbnail.ts";
-import readingBible from "../../images/reading_bible.jpg";
+import readingBible from "../../assets/images/reading_bible.jpg";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
+import { theme } from "../../styles/theme";
 import {
   LastestSermon,
   RecentSermon,
   SermonBox,
   SermonBoxText,
-  PrimaryColor,
-  WhiteColor,
   A,
 } from "../Sermons/SermonsPage.styles.ts";
 
@@ -105,7 +104,7 @@ const SermonsPage = () => {
                               navigate(`/sermons/${latestSermon.id}`)
                             }
                           >
-                            <Play size={30} color={`${PrimaryColor}`} />
+                            <Play size={30} color={`${theme.colors.primary}`} />
                           </div>
                         </motion.div>
                       </motion.div>
@@ -141,8 +140,8 @@ const SermonsPage = () => {
                           display: "flex",
                           alignItems: "center",
                           gap: "0.2rem",
-                          background: PrimaryColor,
-                          color: WhiteColor,
+                          background: theme.colors.primary,
+                          color: theme.colors.white,
                           padding: "0.3rem 1rem",
                           borderRadius: "1rem",
                           fontSize: "0.8rem",
@@ -151,7 +150,7 @@ const SermonsPage = () => {
                         }}
                         onClick={() => navigate(`/sermons/${latestSermon.id}`)}
                       >
-                        <Play size={15} color={`${WhiteColor}`} />
+                        <Play size={15} color={`${theme.colors.white}`} />
                         Watch
                       </p>
                     </div>
@@ -198,7 +197,7 @@ const SermonsPage = () => {
                           style={{ display: "flex" }}
                           onClick={() => navigate(`/sermons/${sermon.id}`)}
                         >
-                          <Play size={30} color={`${PrimaryColor}`} />
+                          <Play size={30} color={`${theme.colors.primary}`} />
                         </div>
                       </motion.div>
                     </motion.div>
@@ -218,13 +217,13 @@ const SermonsPage = () => {
                         display: "flex",
                         alignItems: "center",
                         gap: "0.2rem",
-                        color: PrimaryColor,
+                        color: theme.colors.primary,
                         fontSize: "0.8rem",
                         fontWeight: 600,
                       }}
                       onClick={() => navigate(`/sermons/${sermon.id}`)}
                     >
-                      <Play size={15} color={`${PrimaryColor}`} />
+                      <Play size={15} color={`${theme.colors.primary}`} />
                       Watch
                     </p>
                   </div>

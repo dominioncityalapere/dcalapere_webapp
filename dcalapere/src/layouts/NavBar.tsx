@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import dc_logo_white from "../assets/dc_logo_white.png";
+import dc_logo_white from "../assets/icons/dc_logo_white.png";
 import { Menu } from "lucide-react";
+import { theme } from "../styles/theme";
 import {
   NavBarContainer,
-  TextColorW,
   MainMenu,
   MenuList,
   MenuListII,
@@ -14,7 +13,6 @@ import {
   MenuToggle,
   MobileMenuWrapper,
   MobileMenuContent,
-  PrimaryColor,
   RemoveGPButton,
   MobileMenuContentBorder,
   GiveButton,
@@ -28,7 +26,6 @@ const NavBar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navigate = useNavigate();
 
   // Close menu if clicked outside
   useEffect(() => {
@@ -66,7 +63,7 @@ const NavBar = () => {
             style={{
               display: "flex",
               textDecoration: "none",
-              color: TextColorW,
+              color: theme.colors.white,
               alignItems: "center",
             }}
           >
@@ -99,7 +96,7 @@ const NavBar = () => {
           <A to="/">
             <GiveButton
               style={{
-                border: `0.1rem solid ${TextColorW}`,
+                border: `0.1rem solid ${theme.colors.white}`,
                 borderRadius: "3rem",
                 padding: "0.3rem 0.8rem 0.3rem 0.8rem",
               }}
@@ -111,8 +108,8 @@ const NavBar = () => {
           <A to="/">
             <PlanButton
               style={{
-                backgroundColor: TextColorW,
-                color: PrimaryColor,
+                backgroundColor: theme.colors.white,
+                color: theme.colors.primary,
                 padding: "0.3rem 0.8rem 0.3rem 0.8rem",
                 borderRadius: "3rem",
               }}
@@ -127,7 +124,7 @@ const NavBar = () => {
             <A to="/give">
               <GiveButton
                 style={{
-                  border: `0.1rem solid ${TextColorW}`,
+                  border: `0.1rem solid ${theme.colors.white}`,
                   borderRadius: "3rem",
                   padding: "0.3rem 0.8rem 0.3rem 0.8rem",
                 }}
@@ -137,8 +134,8 @@ const NavBar = () => {
             </A>
             <PlanButton
               style={{
-                backgroundColor: TextColorW,
-                color: PrimaryColor,
+                backgroundColor: theme.colors.white,
+                color: theme.colors.primary,
                 padding: "0.2rem 0.8rem 0.2rem 0.8rem",
                 borderRadius: "3rem",
               }}
@@ -190,8 +187,8 @@ const NavBar = () => {
             <A to="/planyourvisit" onClick={closeMenu}>
               <div
                 style={{
-                  backgroundColor: PrimaryColor,
-                  color: TextColorW,
+                  backgroundColor: theme.colors.primary,
+                  color: theme.colors.white,
                   textAlign: "center",
                   padding: "0.1rem 0.8rem 0.1rem 0.8rem",
                   borderRadius: "3rem",
@@ -204,8 +201,8 @@ const NavBar = () => {
             <A to="/give" onClick={closeMenu}>
               <div
                 style={{
-                  border: `0.1rem solid ${PrimaryColor}`,
-                  color: PrimaryColor,
+                  border: `0.1rem solid ${theme.colors.primary}`,
+                  color: theme.colors.primary,
                   textAlign: "center",
                   borderRadius: "3rem",
                   padding: "0.1rem 0.8rem 0.1rem 0.8rem",

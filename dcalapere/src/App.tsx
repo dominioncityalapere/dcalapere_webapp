@@ -2,18 +2,18 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import NavBar from "./layouts/NavBar.tsx";
-import HeroSection from "./sections/HeroSection.tsx";
-import ServiceTimeSection from "./sections/ServiceTimeSection.tsx";
-import DailyDevotional from "./sections/DailyDevotional.tsx";
-import SermonSection from "./sections/SermonSection.tsx";
-import EventsSection from "./sections/EventsSection/EventsSection.tsx";
-import AdminDashboard from "./admin/AdminDashboard.tsx";
-import AdminLogin from "./admin/AdminLogin.tsx";
-import WelcomeSection from "./sections/WelcomeSection.tsx";
+import HeroSection from "./pages/Home/sections/HeroSection/HeroSection.tsx";
+import ServiceTimeSection from "./pages/Home/sections/ServiceTimeSection/ServiceTimeSection.tsx";
+import DailyDevotional from "./pages/Home/sections/DailyDevotional/DailyDevotional.tsx";
+import SermonSection from "./pages/Home/sections/SermonSection/SermonSection.tsx";
+import EventsSection from "./pages/Home/sections/EventsSection/EventsSection.tsx";
+import AdminDashboard from "./pages/Admin/AdminDashboard.tsx";
+import AdminLogin from "./pages/Admin/AdminLogin.tsx";
+import WelcomeSection from "./pages/Home/sections/WelcomeSection/WelcomeSection.tsx";
 import Footer from "./layouts/Footer.tsx";
 
-import ScrollToTop from "./components/ScrollToTop.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
+import ScrollToTop from "./components/common/ScrollToTop.tsx";
+import AboutPage from "./pages/About/AboutPage.tsx";
 import EventsPage from "./pages/Events/EventsPage.tsx";
 import SermonsPage from "./pages/Sermons/SermonsPage.tsx";
 import SermonDetails from "./pages/Sermons/SermonDetails.tsx"

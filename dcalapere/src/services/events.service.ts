@@ -1,4 +1,4 @@
-import { supabase } from "../lib/supabase";
+import { supabase } from "./supabase";
 
 export const getEvents = async () => {
   const { data, error } = await supabase
@@ -14,7 +14,6 @@ export const getEvents = async () => {
 
   return data;
 };
-
 
 export const getEventsSection = async () => {
   const { data, error } = await supabase

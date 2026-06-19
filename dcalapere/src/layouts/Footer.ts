@@ -1,31 +1,22 @@
 import styled from "styled-components";
-
-export const PrimaryColor = "#072ac8";
-export const WhiteColor = "#FFFFFF";
-export const BlackColor = "#000000";
-export const YellowColor = "#CA8A04";
-export const OffWhiteColor = "#f9fafb";
-export const GreyColor = "#777777";
-export const DevotionalContentBgColor = "rgba(255, 255, 255, 0.69)";
-export const FooterBgColor = "#121212";
-export const BorderLineColor = "rgba(158, 179, 194, 0.2)";
+import { theme } from "../styles/theme";
 
 export const A = styled.a`
   text-decoration: none;
   cursor: pointer;
-  color: ${GreyColor};
+  color: ${theme.colors.grey};
 
   @media (min-width: 768px) {
     width: fit-content;
   }
 
   &:hover {
-    color: ${WhiteColor};
+    color: ${theme.colors.white};
   }
 `;
 
 export const Border = styled.div`
-  border-bottom: 0.1rem solid ${BorderLineColor};
+  border-bottom: 0.1rem solid ${theme.colors.borderLine};
   margin: auto 1rem;
 
   @media (min-width: 768px) {
@@ -38,7 +29,7 @@ export const Border = styled.div`
 `;
 
 export const BgColor = styled.div`
-  background: ${FooterBgColor};
+  background: ${theme.colors.darkBg};
 
   @media (min-width: 768px) {
   }
@@ -49,7 +40,7 @@ export const FooterContentA = styled.div`
   grid-template-columns: auto;
   gap: 1rem;
   padding: 2rem 1rem;
-  color: ${WhiteColor};
+  color: ${theme.colors.white};
   text-align: left;
 
   .firstGrid {
@@ -80,7 +71,7 @@ export const FooterContentA = styled.div`
       width: 1.5rem;
       filter: invert(100%) sepia(0%) saturate(0%) brightness(100%)
         contrast(100%);
-      background: ${BorderLineColor};
+      background: ${theme.colors.borderLine};
       padding: 0.5rem;
       border-radius: 1rem;
 
@@ -145,11 +136,11 @@ export const FooterContentB = styled.div`
   gap: 1rem;
   padding: 2rem 1rem;
   text-align: left;
-  color: ${GreyColor};
+  color: ${theme.colors.grey};
 
   .headerContentB {
     padding-bottom: 0.4rem;
-    color: ${OffWhiteColor};
+    color: ${theme.colors.offWhite};
     font-weight: semi-bold;
   }
 
@@ -175,7 +166,7 @@ export const FooterContentC = styled.div`
   grid-template-rows: auto auto;
   gap: 1rem;
   padding: 2rem 1rem;
-  color: ${GreyColor};
+  color: ${theme.colors.grey};
 
   .textContentC {
     display: flex;

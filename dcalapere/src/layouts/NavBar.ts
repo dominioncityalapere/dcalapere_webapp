@@ -1,12 +1,6 @@
 import styled from "styled-components";
+import { theme } from "../styles/theme";
 import { Link } from "react-router-dom";
-
-export const PrimaryColor = "#072ac8";
-export const TextColorW = "#FFFFFF";
-export const MainMenuBgColor = "rgba(255, 255, 255, 0.05)";
-export const MobileMenuBgColor = "#121212";
-export const BorderLineColor = "rgba(158, 179, 194, 0.2)";
-
 
 interface MainMenuProps {
   $isScrolled: boolean;
@@ -18,14 +12,14 @@ export const NavBarContainer = styled.div<MainMenuProps>`
   z-index: 1000;
   transition: all 0.3s ease;
   background-color: ${(props) =>
-    props.$isScrolled ? MobileMenuBgColor : "transparent"};
+    props.$isScrolled ? theme.colors.darkBg : "transparent"};
   backdrop-filter: ${(props) => (props.$isScrolled ? "blur(10px)" : "none")};
   -webkit-backdrop-filter: ${(props) =>
     props.$isScrolled ? "blur(10px)" : "none"};
 `;
 
 export const A = styled(Link)`
-    color: ${TextColorW};
+    color: ${theme.colors.white};
     text-decoration: none;
     color: inherit;
     cursor: pointer;
@@ -69,23 +63,23 @@ export const MobileMenuContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  color: ${TextColorW};
-  background-color: ${MobileMenuBgColor};
-  border-bottom: 0.1rem solid ${BorderLineColor};
-  border-top: 0.1rem solid ${BorderLineColor};
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.darkBg};
+  border-bottom: 0.1rem solid ${theme.colors.borderLine};
+  border-top: 0.1rem solid ${theme.colors.borderLine};
   font-size: 0.9rem;
 
   /*TABLET */
   @media (min-width: 768px) {
-    border-bottom: 0.1rem solid ${BorderLineColor};
-    border-top: 0.1rem solid ${BorderLineColor};
+    border-bottom: 0.1rem solid ${theme.colors.borderLine};
+    border-top: 0.1rem solid ${theme.colors.borderLine};
     margin: 3.6rem 0 0 0;
   }
 `;
 
 export const MobileMenuContentBorder = styled.div`
-  padding-top:  0.5rem;
-  border-bottom: 0.1rem solid ${BorderLineColor};
+  padding-top: 0.5rem;
+  border-bottom: 0.1rem solid ${theme.colors.borderLine};
   width: 100%;
 `;
 
@@ -145,7 +139,7 @@ export const MenuList = styled.span`
     gap: 2rem;
     font-size: 0.9rem;
     font-weight: 1rem;
-    color: ${TextColorW};
+    color: ${theme.colors.white};
   }
 `;
 
@@ -159,7 +153,7 @@ export const MenuListII = styled.span`
     gap: 1rem;
     font-size: 0.9rem;
     font-weight: 1rem;
-    color: ${TextColorW};
+    color: ${theme.colors.white};
   }
 `;
 
@@ -175,8 +169,8 @@ export const PlanButton = styled.span`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: ${PrimaryColor} !important;
-    color: ${TextColorW} !important;
+    background-color: ${theme.colors.primary} !important;
+    color: ${theme.colors.white} !important;
   }
 `;
 
@@ -184,7 +178,7 @@ export const PlanButton = styled.span`
 export const MenuToggle = styled.div`
   @media (max-width: 768px) {
     display: flex;
-    color: ${TextColorW};
+    color: ${theme.colors.white};
     position: relative;
     z-index: 50;
   }
