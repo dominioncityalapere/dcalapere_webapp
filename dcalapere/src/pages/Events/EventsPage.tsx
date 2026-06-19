@@ -4,13 +4,8 @@ import type { EventType } from "./EventsPage.types.ts";
 import NavBar from "../../layouts/NavBar.tsx";
 import Footer from "../../layouts/Footer.tsx";
 import { Calendar, Clock4, MapPin } from "lucide-react";
-import {
-  BlackColor,
-  BorderLineColor,
-  EventContainer,
-  GreyColor,
-  PrimaryColor,
-} from "./EventsPage.styles.ts";
+import { EventContainer } from "./EventsPage.styles.ts";
+import { theme } from "../../styles/theme";
 
 function EventsPage() {
   const [events, setEvents] = useState<EventType[]>([]);
@@ -75,7 +70,7 @@ function EventsPage() {
                   <div className="eventInfoFlex">
                     <p
                       style={{
-                        background: PrimaryColor,
+                        background: theme.colors.primary,
                         width: "fit-content",
                         padding: "0.1rem 0.5rem",
                         borderRadius: "1rem",
@@ -149,17 +144,19 @@ function EventsPage() {
             ))}
           </div>
 
-          <div style={{ background: BorderLineColor, padding: "5rem 0" }}>
+          <div
+            style={{ background: theme.colors.borderLine, padding: "5rem 0" }}
+          >
             <p
               className="bottomHeader"
               style={{
                 fontWeight: "bold",
-                color: BlackColor,
+                color: theme.colors.black,
               }}
             >
               Want to stay updated?
             </p>
-            <p style={{ color: GreyColor }}>
+            <p style={{ color: theme.colors.grey }}>
               Follow us on social media so you never miss an event.
             </p>
           </div>

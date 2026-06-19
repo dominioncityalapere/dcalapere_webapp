@@ -1,23 +1,14 @@
 import styled from "styled-components";
+import { theme } from "../../styles/theme";
 import { Link } from "react-router-dom";
-import welcomeBg from "../../images/welcomeBg.png";
-
-export const PrimaryColor = "#072ac8";
-export const WhiteColor = "#FFFFFF";
-export const FaintWhiteColor = "#FFFFFF80";
-export const OffWhiteColor = "#f9fafb";
-export const BlackColor = "#000000";
-export const TextColorW = "#FFFFFF";
-export const GreyColor = "#777777";
-export const BorderLineColor = "rgba(158, 179, 194, 0.2)";
-export const TitleBgColor = "#121212";
+import welcomeBg from "../../assets/images/welcomeBg.png";
 
 export const LastestSermon = styled.div`
-  background: ${WhiteColor};
+  background: ${theme.colors.white};
 
   .sermonHeader {
-    background: ${TitleBgColor};
-    color: ${WhiteColor};
+    background: ${theme.colors.darkBg};
+    color: ${theme.colors.white};
     padding: 5rem 1rem 2rem 1rem;
 
     @media (min-width: 768px) {
@@ -47,7 +38,7 @@ export const LastestSermon = styled.div`
   .latestMessage {
     font-size: 1.2rem;
     font-weight: bold;
-    color: ${BlackColor};
+    color: ${theme.colors.black};
     text-align: left;
     padding: 2rem 2rem 0 2rem;
 
@@ -87,9 +78,9 @@ export const LastestSermon = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background: ${TitleBgColor};
+    background: ${theme.colors.darkBg};
     border-radius: 2rem;
-    color: ${WhiteColor};
+    color: ${theme.colors.white};
     padding-bottom: 2rem;
 
     @media (min-width: 1024px) {
@@ -183,9 +174,9 @@ export const LastestSermon = styled.div`
 `;
 
 export const RecentSermon = styled.div`
-  background: ${OffWhiteColor};
+  background: ${theme.colors.offWhite};
   padding: 3rem 1rem;
-  color: ${BlackColor};
+  color: ${theme.colors.black};
   text-align: left;
 
   @media (min-width: 1024px) {
@@ -195,7 +186,7 @@ export const RecentSermon = styled.div`
   .recentSermon {
     font-size: 1.2rem;
     font-weight: bold;
-    color: ${BlackColor};
+    color: ${theme.colors.black};
     text-align: left;
     padding: 0 0 2rem 1rem;
 
@@ -211,7 +202,7 @@ export const RecentSermon = styled.div`
 `;
 
 export const SermonBox = styled.div`
-  background-color: ${WhiteColor};
+  background-color: ${theme.colors.white};
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
@@ -245,7 +236,7 @@ export const SermonBox = styled.div`
 
   .sermonPreacher {
     font-size: 0.9rem;
-    color: ${GreyColor};
+    color: ${theme.colors.grey};
   }
 
   .videoOverlay {
@@ -288,7 +279,7 @@ export const SermonBoxText = styled.div`
 `;
 
 export const A = styled(Link)`
-  color: ${WhiteColor};
+  color: ${theme.colors.white};
   text-decoration: none;
   color: inherit;
   cursor: pointer;
@@ -299,9 +290,9 @@ export const A = styled(Link)`
 
   .allSermonButton {
     width: fit-content;
-    border: 0.1rem solid ${PrimaryColor};
+    border: 0.1rem solid ${theme.colors.primary};
     border-radius: 2rem;
-    color: ${PrimaryColor};
+    color: ${theme.colors.primary};
     padding: 0.4rem 1rem;
     font-size: 0.8rem;
 
@@ -311,8 +302,8 @@ export const A = styled(Link)`
     }
 
     &:hover {
-      color: ${WhiteColor};
-      background: ${PrimaryColor};
+      color: ${theme.colors.white};
+      background: ${theme.colors.primary};
     }
   }
 `;
@@ -329,7 +320,7 @@ export const SermonDetailsContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   padding: 2rem;
-  color: ${BlackColor};
+  color: ${theme.colors.black};
 
   .closeButton {
     display: flex;
@@ -338,7 +329,7 @@ export const SermonDetailsContainer = styled.div`
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
     cursor: pointer;
-    color: ${WhiteColor};
+    color: ${theme.colors.white};
 
     @media (min-width: 768px) {
       position: absolute;
@@ -355,7 +346,7 @@ export const SermonDetailsContainer = styled.div`
 `;
 
 export const VideoWrapper = styled.div`
-  background: ${FaintWhiteColor};
+  background: ${theme.colors.faintWhite};
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;

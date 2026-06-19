@@ -1,14 +1,14 @@
-import dc_logo_white from "../assets/dc_logo_white.png";
-import facebook from "../assets/facebook.png";
-import instagram from "../assets/instagram.png";
-import youtube from "../assets/youtube.png";
+import dc_logo_white from "../assets/icons/dc_logo_white.png";
+import facebook from "../assets/icons/facebook.png";
+import instagram from "../assets/icons/instagram.png";
+import youtube from "../assets/icons/youtube.png";
+import { theme } from "../styles/theme";
 import {
   A,
   BgColor,
   FooterContentA,
   FooterContentB,
   FooterContentC,
-  WhiteColor,
   Border,
 } from "./Footer";
 
@@ -43,7 +43,9 @@ const Footer = () => {
         </div>
 
         <div className="secondGrid">
-          <p style={{ color: WhiteColor, fontWeight: "bold" }}>Connect</p>
+          <p style={{ color: theme.colors.white, fontWeight: "bold" }}>
+            Connect
+          </p>
           <div>
             <A href="">
               <span>Plan Your Visit</span>
@@ -63,7 +65,7 @@ const Footer = () => {
         </div>
 
         <div className="thirdGrid">
-          <p style={{ color: WhiteColor, fontWeight: "bold" }}>Grow</p>
+          <p style={{ color: theme.colors.white, fontWeight: "bold" }}>Grow</p>
           <div>
             <A href="">
               <span>Sermons</span>
@@ -83,7 +85,9 @@ const Footer = () => {
         </div>
 
         <div className="fourthGrid">
-          <p style={{ color: WhiteColor, fontWeight: "bold" }}>Resources</p>
+          <p style={{ color: theme.colors.white, fontWeight: "bold" }}>
+            Resources
+          </p>
           <div>
             <A href="">
               <span>About Us</span>

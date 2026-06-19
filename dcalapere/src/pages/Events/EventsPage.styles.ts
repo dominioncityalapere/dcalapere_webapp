@@ -1,19 +1,12 @@
 import styled from "styled-components";
-
-export const PrimaryColor = "#072ac8";
-export const WhiteColor = "#FFFFFF";
-export const BlackColor = "#000000";
-export const TextColorW = "#FFFFFF";
-export const GreyColor = "#777777";
-export const BorderLineColor = "rgba(158, 179, 194, 0.2)";
-export const TitleBgColor = "#121212";
+import { theme } from "../../styles/theme";
 
 export const EventContainer = styled.div`
-  background: ${WhiteColor};
+  background: ${theme.colors.white};
 
   .eventTitle {
-    background: ${TitleBgColor};
-    color: ${WhiteColor};
+    background: ${theme.colors.darkBg};
+    color: ${theme.colors.white};
     padding: 5rem 1rem 2rem 1rem;
 
     @media (min-width: 768px) {
@@ -66,9 +59,9 @@ export const EventContainer = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      background: ${TitleBgColor};
+      background: ${theme.colors.darkBg};
       border-radius: 2rem;
-      color: ${WhiteColor};
+      color: ${theme.colors.white};
       padding-bottom: 2rem;
 
       @media (min-width: 1024px) {
@@ -124,10 +117,10 @@ export const EventContainer = styled.div`
     }
 
     .eventDetailB {
-      background: ${BorderLineColor};
+      background: ${theme.colors.borderLine};
       padding-bottom: 2rem;
       border-radius: 2rem;
-      color: ${BlackColor};
+      color: ${theme.colors.black};
 
       .eventImageSidebar {
         border-radius: 2rem 2rem 0 0;
@@ -151,7 +144,7 @@ export const EventContainer = styled.div`
       }
 
       .numberDetail {
-        color: ${GreyColor};
+        color: ${theme.colors.grey};
         display: flex;
         gap: 0.5rem;
         padding: 0 1rem;
