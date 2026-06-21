@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { theme } from "../styles/theme";
+import { Link } from "react-router-dom";
 
-export const A = styled.a`
+export const A = styled(Link)`
   text-decoration: none;
   cursor: pointer;
   color: ${theme.colors.grey};
@@ -67,17 +68,19 @@ export const FooterContentA = styled.div`
       gap: 1rem;
     }
 
-    .socialMediaIcons {
-      width: 1.5rem;
-      filter: invert(100%) sepia(0%) saturate(0%) brightness(100%)
-        contrast(100%);
-      background: ${theme.colors.borderLine};
+    .fa-youtube,
+    .fa-facebook,
+    .fa-instagram {
       padding: 0.5rem;
-      border-radius: 1rem;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      transition: 0.3s ease;
+      background: ${theme.colors.white};
+      color: ${theme.colors.black};
 
       &:hover {
-        filter: invert(13%) sepia(95%) saturate(5453%) hue-rotate(231deg)
-          brightness(85%) contrast(101%);
+        color: ${theme.colors.white};
+        background: transparent;
       }
     }
   }
@@ -168,10 +171,24 @@ export const FooterContentC = styled.div`
   padding: 2rem 1rem;
   color: ${theme.colors.grey};
 
+  .copyright {
+    font-size: 0.97rem;
+  }
+
   .textContentC {
     display: flex;
     gap: 1rem;
     justify-content: center;
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      color: ${theme.colors.grey};
+
+      &:hover {
+        color: ${theme.colors.white};
+      }
+    }
   }
 
   @media (min-width: 768px) {

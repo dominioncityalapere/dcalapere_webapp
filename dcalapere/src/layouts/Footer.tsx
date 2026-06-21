@@ -1,7 +1,4 @@
 import dc_logo_white from "../assets/icons/dc_logo_white.png";
-import facebook from "../assets/icons/facebook.png";
-import instagram from "../assets/icons/instagram.png";
-import youtube from "../assets/icons/youtube.png";
 import { theme } from "../styles/theme";
 import {
   A,
@@ -30,15 +27,27 @@ const Footer = () => {
           </div>
 
           <div className="socialMediaIconsContainer">
-            <A href="">
-              <img className="socialMediaIcons" src={facebook} alt="" />
-            </A>
-            <A href="">
-              <img className="socialMediaIcons" src={instagram} alt="" />
-            </A>
-            <A href="">
-              <img className="socialMediaIcons" src={youtube} alt="" />
-            </A>
+            <a
+              href="https://web.facebook.com/groups/264198328180602"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fa-brands fa-facebook"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/dominion_city_alapere"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fa-brands fa-instagram"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/@DominionCityAlapere"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fa-brands fa-youtube"></i>
+            </a>
           </div>
         </div>
 
@@ -47,18 +56,18 @@ const Footer = () => {
             Connect
           </p>
           <div>
-            <A href="">
+            <A to="/plan">
               <span>Plan Your Visit</span>
             </A>
           </div>
           <div>
-            <A href="">
+            <A to="/#services">
               <span>Service Time</span>
             </A>
           </div>
 
           <div>
-            <A href="">
+            <A to="/contact">
               <span>Contact Us</span>
             </A>
           </div>
@@ -67,18 +76,18 @@ const Footer = () => {
         <div className="thirdGrid">
           <p style={{ color: theme.colors.white, fontWeight: "bold" }}>Grow</p>
           <div>
-            <A href="">
+            <A to="/sermons">
               <span>Sermons</span>
             </A>
           </div>
           <div>
-            <A href="">
+            <A to="/events">
               <span>Events</span>
             </A>
           </div>
 
           <div>
-            <A href="">
+            <A to="/give">
               <span>Give</span>
             </A>
           </div>
@@ -89,13 +98,8 @@ const Footer = () => {
             Resources
           </p>
           <div>
-            <A href="">
+            <A to="/about">
               <span>About Us</span>
-            </A>
-          </div>
-          <div>
-            <A href="">
-              <span>Our Beliefs</span>
             </A>
           </div>
         </div>
@@ -130,12 +134,19 @@ const Footer = () => {
 
       <FooterContentC>
         <div>
-          <p>Copyright © {currentYear} Dominion City Church Alapere</p>
+          <p className="copyright">
+            Copyright © {currentYear} Dominion City Church Alapere
+          </p>
         </div>
 
         <div className="textContentC">
-          <p>Privacy Policy</p>
-          <p>Terms of Service</p>
+          <a
+            href="https://www.dominioncity.cc/privacy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Privacy Policy
+          </a>
         </div>
       </FooterContentC>
     </BgColor>
