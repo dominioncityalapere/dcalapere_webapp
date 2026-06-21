@@ -10,19 +10,20 @@ export const NavBarContainer = styled.div<MainMenuProps>`
   position: fixed;
   width: 100%;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   background-color: ${(props) =>
     props.$isScrolled ? theme.colors.darkBg : "transparent"};
-  backdrop-filter: ${(props) => (props.$isScrolled ? "blur(10px)" : "none")};
+  backdrop-filter: ${(props) =>
+    props.$isScrolled ? "blur(0.625rem)" : "none"};
   -webkit-backdrop-filter: ${(props) =>
-    props.$isScrolled ? "blur(10px)" : "none"};
+    props.$isScrolled ? "blur(0.625rem)" : "none"};
 `;
 
 export const A = styled(Link)`
-    color: ${theme.colors.white};
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
+  color: ${theme.colors.white};
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 `;
 
 export const MainMenu = styled.div`
@@ -59,7 +60,7 @@ export const MobileMenuContent = styled.div`
   width: 100%;
   padding: 1rem 1rem 1.25rem 1rem;
   text-align: left;
-  margin: 3.3rem 0 0 0;
+  margin: 3.2rem 0 0 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -69,11 +70,42 @@ export const MobileMenuContent = styled.div`
   border-top: 0.1rem solid ${theme.colors.borderLine};
   font-size: 0.9rem;
 
+  .mobileMenuList:hover {
+    text-decoration: underline;
+  }
+
+  .mobileMenuListPlan {
+    background: ${theme.colors.primary};
+    border: 0.1rem solid ${theme.colors.primary};
+    color: ${theme.colors.white};
+    text-align: center;
+    padding: 0.1rem 0.8rem 0.1rem 0.8rem;
+    border-radius: 3rem;
+
+    &:hover {
+      background: transparent;
+      color: ${theme.colors.primary};
+    }
+  }
+
+  .mobileMenuListGive {
+    border: 0.1rem solid ${theme.colors.primary};
+    color: ${theme.colors.primary};
+    text-align: center;
+    border-radius: 3rem;
+    padding: 0.1rem 0.8rem 0.1rem 0.8rem;
+
+    &:hover {
+      border: 0.1rem solid ${theme.colors.white};
+      color: ${theme.colors.white};
+    }
+  }
+
   /*TABLET */
   @media (min-width: 768px) {
     border-bottom: 0.1rem solid ${theme.colors.borderLine};
     border-top: 0.1rem solid ${theme.colors.borderLine};
-    margin: 3.6rem 0 0 0;
+    margin: 3.4rem 0 0 0;
   }
 `;
 
@@ -82,8 +114,6 @@ export const MobileMenuContentBorder = styled.div`
   border-bottom: 0.1rem solid ${theme.colors.borderLine};
   width: 100%;
 `;
-
-
 
 export const MenuLogo = styled.div`
   display: flex;
@@ -126,6 +156,10 @@ export const IMG = styled.div`
 
 export const MenuList = styled.span`
   display: none;
+
+  .menuList:hover {
+    text-decoration: underline;
+  }
 
   /* TABLET */
   @media (min-width: 768px) {
@@ -173,7 +207,6 @@ export const PlanButton = styled.span`
     color: ${theme.colors.white} !important;
   }
 `;
-
 
 export const MenuToggle = styled.div`
   @media (max-width: 768px) {

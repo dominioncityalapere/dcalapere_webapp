@@ -75,25 +75,25 @@ const NavBar = () => {
         </MenuLogo>
 
         <MenuList>
-          <span>
-            <A to="/about">About</A>
-          </span>
-          <span>
-            <A to="/#services">Services</A>
-          </span>
-          <span>
-            <A to="/events">Events</A>
-          </span>
-          <span>
-            <A to="/sermons">Sermons</A>
-          </span>
-          <span>
-            <A to="/contact">Contact</A>
-          </span>
+          <A to="/about" className="menuList">
+            <span>About</span>
+          </A>
+          <A to="/#services" className="menuList">
+            <span>Services</span>
+          </A>
+          <A to="/events" className="menuList">
+            <span>Events</span>
+          </A>
+          <A to="/sermons" className="menuList">
+            <span>Sermons</span>
+          </A>
+          <A to="/contact" className="menuList">
+            <span>Contact</span>
+          </A>
         </MenuList>
 
         <MenuListII>
-          <A to="/">
+          <A to="/give">
             <GiveButton
               style={{
                 border: `0.1rem solid ${theme.colors.white}`,
@@ -105,7 +105,7 @@ const NavBar = () => {
             </GiveButton>
           </A>
 
-          <A to="/">
+          <A to="/plan">
             <PlanButton
               style={{
                 backgroundColor: theme.colors.white,
@@ -132,16 +132,19 @@ const NavBar = () => {
                 Give
               </GiveButton>
             </A>
-            <PlanButton
-              style={{
-                backgroundColor: theme.colors.white,
-                color: theme.colors.primary,
-                padding: "0.2rem 0.8rem 0.2rem 0.8rem",
-                borderRadius: "3rem",
-              }}
-            >
-              <A to="/planyourvisit">Plan Your Visit</A>
-            </PlanButton>
+
+            <A to="/plan">
+              <PlanButton
+                style={{
+                  backgroundColor: theme.colors.white,
+                  color: theme.colors.primary,
+                  padding: "0.2rem 0.8rem 0.2rem 0.8rem",
+                  borderRadius: "3rem",
+                }}
+              >
+                Plan Your Visit
+              </PlanButton>
+            </A>
           </RemoveGPButton>
 
           <Menu
@@ -166,50 +169,30 @@ const NavBar = () => {
           }}
         >
           <MobileMenuContent>
-            <A to="/about">
+            <A to="/about" onClick={closeMenu} className="mobileMenuList">
               <span>About</span>
             </A>
-            <A to="/#services" onClick={closeMenu}>
+            <A to="/#services" onClick={closeMenu} className="mobileMenuList">
               <span>Services</span>
             </A>
-            <A to="/events" onClick={closeMenu}>
+            <A to="/events" onClick={closeMenu} className="mobileMenuList">
               <span>Events</span>
             </A>
-            <A to="/sermons" onClick={closeMenu}>
+            <A to="/sermons" onClick={closeMenu} className="mobileMenuList">
               <span>Sermons</span>
             </A>
-            <A to="/contact" onClick={closeMenu}>
+            <A to="/contact" onClick={closeMenu} className="mobileMenuList">
               <span>Contact</span>
             </A>
 
             <MobileMenuContentBorder></MobileMenuContentBorder>
 
-            <A to="/planyourvisit" onClick={closeMenu}>
-              <div
-                style={{
-                  backgroundColor: theme.colors.primary,
-                  color: theme.colors.white,
-                  textAlign: "center",
-                  padding: "0.1rem 0.8rem 0.1rem 0.8rem",
-                  borderRadius: "3rem",
-                }}
-              >
-                Plan Your Visit
-              </div>
+            <A to="/plan" onClick={closeMenu}>
+              <div className="mobileMenuListPlan">Plan Your Visit</div>
             </A>
 
             <A to="/give" onClick={closeMenu}>
-              <div
-                style={{
-                  border: `0.1rem solid ${theme.colors.primary}`,
-                  color: theme.colors.primary,
-                  textAlign: "center",
-                  borderRadius: "3rem",
-                  padding: "0.1rem 0.8rem 0.1rem 0.8rem",
-                }}
-              >
-                Give
-              </div>
+              <div className="mobileMenuListGive">Give</div>
             </A>
           </MobileMenuContent>
         </MobileMenuWrapper>
