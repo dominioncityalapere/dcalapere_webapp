@@ -18,6 +18,8 @@ import EventsPage from "./pages/Events/EventsPage.tsx";
 import SermonsPage from "./pages/Sermons/SermonsPage.tsx";
 import SermonDetails from "./pages/Sermons/SermonDetails.tsx"
 import ContactPage from "./pages/Contact/ContactPage.tsx"
+import GivePage from "./pages/Give/GivePage.tsx";
+import PlanPage from "./pages/Plan/PlanPage.tsx";
 
 function HomePage() {
   return (
@@ -49,6 +51,8 @@ function App() {
         <Route path="/sermons" element={<SermonsPage />} />
         <Route path="/sermons/:id" element={<SermonDetails />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/give" element={<GivePage />} />
+        <Route path="/plan" element={<PlanPage />} />
 
         <Route path="/dcalapere-login-26" element={<AdminLogin />} />
         <Route path="/dcalapere-access-26" element={<AdminDashboard />} />

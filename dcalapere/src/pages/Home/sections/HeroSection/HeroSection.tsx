@@ -45,7 +45,7 @@ const HeroSection = () => {
             </HeroP>
           </div>
           <HeroButton>
-            <A href="#">
+            <A to="/plan">
               <HeroPlanButton
                 style={{
                   backgroundColor: theme.colors.primary,
@@ -57,7 +57,7 @@ const HeroSection = () => {
               </HeroPlanButton>
             </A>
 
-            <A href="#">
+            <A to="">
               <HeroGiveButton
                 style={{
                   border: `0.1rem solid ${theme.colors.white}`,

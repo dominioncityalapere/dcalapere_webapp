@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { theme } from "../../../../styles/theme";
 import welcomeBg from "../../../../assets/images/welcomeBg.png";
+import { Link } from "react-router-dom";
 
 
-export const A = styled.a`
+export const A = styled(Link)`
   text-decoration: none;
   cursor: pointer;
   width: 100%;
@@ -18,6 +19,8 @@ export const PlanButton = styled.div`
   padding: 0.4rem 1rem;
   transition: all 0.3s ease;
   background: ${theme.colors.white};
+  color: ${theme.colors.primary};
+  border: 0.1rem solid ${theme.colors.white};
 
   @media (min-width: 768px) {
     font-size: 1rem;
@@ -25,7 +28,8 @@ export const PlanButton = styled.div`
   }
 
   &:hover {
-    background-color: ${theme.colors.offWhite};
+    background: transparent;
+    color: ${theme.colors.white};
   }
 `;
 
@@ -53,7 +57,7 @@ export const BgColor = styled.div`
   padding: 3rem 1rem;
 
   @media (min-width: 768px) {
-    padding: 7rem 3rem;
+    padding: 5rem 3rem;
   }
 `;
 

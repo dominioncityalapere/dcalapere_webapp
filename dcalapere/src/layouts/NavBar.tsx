@@ -84,7 +84,7 @@ const NavBar = () => {
           <A to="/events" className="menuList">
             <span>Events</span>
           </A>
-          <A to="/sermons" className="menuList">
+          <A to="/sermons" className="menuList"> 
             <span>Sermons</span>
           </A>
           <A to="/contact" className="menuList">
