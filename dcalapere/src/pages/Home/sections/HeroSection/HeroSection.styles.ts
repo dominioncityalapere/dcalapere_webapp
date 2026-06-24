@@ -2,6 +2,7 @@ import styled from "styled-components";
 import HomeObjectBG_1 from "../../../../assets/images/HomeObjectBG_1.png";
 import HomeObjectBG_2_colour from "../../../../assets/images/HomeObjectBG_2_colour.png";
 import { theme } from "../../../../styles/theme";
+import { Link } from "react-router-dom";
 
 export const BgImage = styled.div`
   background-image: url(${HomeObjectBG_1});
@@ -49,7 +50,7 @@ export const HeroContent = styled.div`
   }
 `;
 
-export const A = styled.a`
+export const A = styled(Link)`
   color: ${theme.colors.white};
   text-decoration: none;
   width: 100%;

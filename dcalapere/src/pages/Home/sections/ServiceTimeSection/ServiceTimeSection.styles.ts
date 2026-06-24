@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../styles/theme";
+import { Link } from "react-router-dom";
 
 export const BgColor = styled.div`
   background-color: ${theme.colors.offWhite};
@@ -17,7 +18,7 @@ export const ServiceContent = styled.div`
   }
 
   @media (min-width: 1024px) {
-    padding: 5rem;
+    padding: 4rem;
   }
 
   .sectionTitle {
@@ -37,7 +38,7 @@ export const ServiceContent = styled.div`
 
   .servicesTimeWrapper {
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto;
     gap: 2rem;
 
     @media (min-width: 768px) {
@@ -46,14 +47,22 @@ export const ServiceContent = styled.div`
     }
 
     @media (min-width: 1024px) {
-      gap: 3rem;
+      gap: 2rem;
     }
   }
 
   .servicesTime {
     background-color: ${theme.colors.servicesBg};
-    padding: 4rem;
+    padding: 2rem 1rem;
     border-radius: 1rem;
+
+    @media (min-width: 768px) {
+      padding: 2rem 1rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 3rem 1rem;
+    }
   }
 
   .day {
@@ -100,14 +109,9 @@ export const PlanButton = styled.div`
   }
 `;
 
-export const A = styled.a`
+export const A = styled(Link)`
   color: ${theme.colors.white};
   text-decoration: none;
-  //   width: 100%;
   color: inherit;
   cursor: pointer;
-
-  //   @media (min-width: 768px) {
-  //     width: auto;
-  //   }
 `;

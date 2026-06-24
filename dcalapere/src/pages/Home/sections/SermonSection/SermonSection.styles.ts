@@ -66,6 +66,7 @@ export const SermonBoxContainer = styled.div`
   display: grid;
   grid-template-columns: auto;
   gap: 2rem;
+  justify-content: center;
   text-align: left;
   padding-bottom: 3rem;
 

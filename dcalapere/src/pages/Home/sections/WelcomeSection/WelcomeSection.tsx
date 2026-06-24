@@ -29,10 +29,9 @@ const WelcomeSection = () => {
           </div>
 
           <div className="welcomeButton">
-            <A href="#">
+            <A to="/plan">
               <PlanButton
                 style={{
-                  color: theme.colors.primary,
                   borderRadius: "3rem",
                 }}
               >
@@ -40,7 +39,7 @@ const WelcomeSection = () => {
               </PlanButton>
             </A>
 
-            <A href="#">
+            <A to="contact">
               <ContactButton
                 style={{
                   color: theme.colors.white,
