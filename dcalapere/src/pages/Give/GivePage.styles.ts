@@ -21,6 +21,20 @@ export const A = styled(Link)`
 export const GiveContainer = styled.div`
   background: ${theme.colors.white};
 
+  .desktopBreak {
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: block;
+    }
+  }
+
+  .tabBreak {
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
   .contactTitleContainer {
     background: ${theme.colors.darkBg};
     color: ${theme.colors.white};
