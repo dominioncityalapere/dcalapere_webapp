@@ -1,4 +1,4 @@
-import { Clock4 } from "lucide-react";
+import { Clock6, Clock8 } from "lucide-react";
 import { theme } from "../../../../styles/theme";
 import { PlanButton, A, BgColor, ServiceContent } from "./ServiceTimeSection.styles";
 
@@ -14,7 +14,7 @@ const ServiceTimeSection = () => {
 
         <div className="servicesTimeWrapper">
           <div className="servicesTime">
-            <Clock4
+            <Clock8
               style={{
                 backgroundColor: theme.colors.primary,
                 padding: "1rem",
@@ -33,7 +33,7 @@ const ServiceTimeSection = () => {
           </div>
 
           <div className="servicesTime">
-            <Clock4
+            <Clock6
               style={{
                 backgroundColor: theme.colors.primary,
                 padding: "1rem",
@@ -52,7 +52,7 @@ const ServiceTimeSection = () => {
           </div>
 
           <div className="servicesTime">
-            <Clock4
+            <Clock6
               style={{
                 backgroundColor: theme.colors.primary,
                 padding: "1rem",

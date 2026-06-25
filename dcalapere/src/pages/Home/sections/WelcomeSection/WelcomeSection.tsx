@@ -39,7 +39,7 @@ const WelcomeSection = () => {
               </PlanButton>
             </A>
 
-            <A to="contact">
+            <A to="/contact">
               <ContactButton
                 style={{
                   color: theme.colors.white,

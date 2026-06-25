@@ -16,8 +16,8 @@ function GivePage() {
             <p className="title">Give</p>
             <p>
               Your generosity helps us touch lives, strengthen our community,
-              and advance God's purpose. <br></br>Every gift makes an eternal
-              impact.
+              and advance God's purpose. <br className="desktopBreak tabBreak" />
+              Every gift makes an eternal impact.
             </p>
           </div>
 
@@ -28,8 +28,8 @@ function GivePage() {
             <p className="bibleVerse">
               Each of you should give what you have decided in your heart to
               give,
-              <br /> not reluctantly or under compulsion, for God loves a
-              cheerful giver.
+              <br className="desktopBreak" /> not reluctantly or under
+              compulsion, for God loves a cheerful giver.
             </p>
             <p className="bookOfTheBible">2 Corinthians 9:7</p>
             <p className="bibleVersion">New International Version</p>
@@ -76,12 +76,10 @@ function GivePage() {
           </div>
 
           <div className="questionContainer">
-            <p className="questionTitle">
-              Questions About Giving?
-            </p>
+            <p className="questionTitle">Questions About Giving?</p>
             <p className="questionDetail">
               Our team is glad to serve you. If you have any questions about
-              giving <br />
+              giving <br className="desktopBreak"/>
               or how your seed supports the work of the ministry, feel free to
               reach out at any time.
             </p>
