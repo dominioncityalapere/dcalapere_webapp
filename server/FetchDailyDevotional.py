@@ -24,7 +24,7 @@ client = TelegramClient(StringSession(session), api_id, api_hash)
 # Supabase
 supabase = create_client(
     os.getenv("VITE_SUPABASE_URL"),
-    os.getenv("VITE_SUPABASE_ANON_KEY")
+    os.getenv("VITE_SUPABASE_SERVICE_ROLE_KEY")
 )
 
 def extract_devotional(messages):
