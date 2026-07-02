@@ -1,19 +1,31 @@
 import os
-import json
 import asyncio
 from dotenv import load_dotenv
 from telethon import TelegramClient
 from telethon.sessions import StringSession
+from supabase import create_client
+
 
 load_dotenv()
 
-api_id = int(os.getenv("TG_API_ID"))
+# Telegram
+api_id = os.getenv("TG_API_ID")
+
+if not api_id:
+    raise ValueError("TG_API_ID is missing")
+
+api_id = int(api_id)
+
 api_hash = os.getenv("TG_API_HASH")
 session = os.getenv("TG_SESSION")
 
 client = TelegramClient(StringSession(session), api_id, api_hash)
 
-JSON_FILE = "data/messages.json"
+# Supabase
+supabase = create_client(
+    os.getenv("VITE_SUPABASE_URL"),
+    os.getenv("VITE_SUPABASE_ANON_KEY")
+)
 
 def extract_devotional(messages):
     valid_devotional = None
@@ -32,7 +44,7 @@ def extract_devotional(messages):
                     combined_text += "\n\n" + next_msg
 
             valid_devotional = {
-                "id": msg["id"],
+                "telegram_id": msg["id"],
                 "text": combined_text
             }
 
@@ -59,28 +71,50 @@ async def fetch_and_save():
         if devotional:
             print(f"FOUND DEVOTIONAL: {devotional['id']}")
 
-            with open(JSON_FILE, "w", encoding="utf-8") as f:
-                json.dump([devotional], f, ensure_ascii=False, indent=2)
+            existing = (supabase
+                        .table("devotionals")
+                        .select("telegram_id")
+                        .eq(
+                            "telegram_id",
+                            devotional["telegram_id"]
+                        )
+                        .execute()
+                        )
+
+            if not existing.data:
+                supabase.table("devotionals").insert({
+                    "telegram_id": devotional["telegram_id"],
+                    "text": devotional["text"]
+                }).execute()
+
+                print("Saved to Supabase")
+
+            else:
+                print("Already exists")
 
         else:
-            print("NO DEVOTIONAL FOUND")
-
-            if os.path.exists(JSON_FILE):
-                print("KEEPING EXISTING FILE")
+            print("No devotional found")
 
     except Exception as e:
-        print("FETCH DD ERROR:", e)
+        print("FETCH ERROR:", e)
 
-
-async def fetch_dd_loop():
+async def main():
     await client.start()
-
-    print("Fetch DD started...")
-
-    while True:
-        await fetch_and_save()
-        await asyncio.sleep(300)
-
+    await fetch_and_save()
+    await client.disconnect()
 
 if __name__ == "__main__":
-    asyncio.run(fetch_dd_loop())
+    asyncio.run(main())
+
+# async def fetch_dd_loop():
+#     await client.start()
+
+#     print("Fetch DD started...")
+
+#     while True:
+#         await fetch_and_save()
+#         await asyncio.sleep(300)
+
+
+# if __name__ == "__main__":
+#     asyncio.run(fetch_dd_loop())
