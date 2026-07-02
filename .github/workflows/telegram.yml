@@ -2,7 +2,7 @@ name: Fetch Telegram Devotional
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/50 * * * *"
 
   workflow_dispatch:
 
@@ -20,7 +20,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r server/requirements.txt
 
       - name: Run fetcher
         env:
@@ -29,4 +29,4 @@ jobs:
           TG_SESSION: ${{ secrets.TG_SESSION }}
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        run: python telegram_fetcher.py
+        run: python server/FetchDailyDevotional.py
