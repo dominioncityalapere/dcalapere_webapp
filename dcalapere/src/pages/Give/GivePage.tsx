@@ -68,7 +68,7 @@ function GivePage() {
 
                 <img
                   src={fcmb}
-                  alt="UBA logo"
+                  alt="FCMB logo"
                   style={{ width: "10rem", borderRadius: "0 1rem 1rem 0" }}
                 />
               </div>
