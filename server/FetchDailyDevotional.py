@@ -69,7 +69,7 @@ async def fetch_and_save():
         devotional = extract_devotional(messages)
 
         if devotional:
-            print(f"FOUND DEVOTIONAL: {devotional['id']}")
+            print(f"FOUND DEVOTIONAL: {devotional['telegram_id']}")
 
             existing = (supabase
                         .table("devotionals")
@@ -80,6 +80,8 @@ async def fetch_and_save():
                         )
                         .execute()
                         )
+            
+            print(existing.data)
 
             if not existing.data:
                 supabase.table("devotionals").insert({
