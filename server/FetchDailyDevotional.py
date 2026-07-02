@@ -107,16 +107,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-# async def fetch_dd_loop():
-#     await client.start()
-
-#     print("Fetch DD started...")
-
-#     while True:
-#         await fetch_and_save()
-#         await asyncio.sleep(300)
-
-
-# if __name__ == "__main__":
-#     asyncio.run(fetch_dd_loop())
