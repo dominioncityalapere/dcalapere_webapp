@@ -6,24 +6,26 @@ import {
   A,
   DevotionalContent,
   SectionTitle,
-  SectionSubTitle,
+  SectionSubTitle, 
 } from "./DailyDevotional.styles";
+import { getLatestDevotional, type Devotional } from "../../../../services/devotionals.service";
 
 const DailyDevotional = () => {
-  const [messages, setMessages] = useState<any[]>([]);
+  const [messages, setMessages] = useState<Devotional[]>([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  useEffect(() => {
-    fetch("https://dcalapere-webapp.onrender.com/messages")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch");
-        }
-        return res.json();
-      })
-      .then((data) => setMessages(data))
-      .catch((err) => console.error(err));
-  }, []);
+useEffect(() => {
+  const loadDevotional = async () => {
+    try {
+      const data = await getLatestDevotional();
+      setMessages(data ? [data] : []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  loadDevotional();
+}, []);
 
   const speakText = (text: string) => {
     // stop current speech before starting another
