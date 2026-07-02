@@ -304,17 +304,13 @@ function PlanPage() {
               </div>
 
               <div className="meetYouButtons">
-                <div className="contactButton">
-                  <A to="/contact">
-                    <span>Contact Us</span>
-                  </A>
-                </div>
+                <A to="/contact" className="contactButton">
+                  <span>Contact Us</span>
+                </A>
 
-                <div className="watchOnlineButton">
-                  <A to="/sermons">
-                    <span>Watch Online First</span>
-                  </A>
-                </div>
+                <A to="/sermons" className="watchOnlineButton">
+                  <span>Watch Online First</span>
+                </A>
               </div>
             </div>
           </div>
