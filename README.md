@@ -1,4 +1,3 @@
-```markdown
 # Dominion City Alapere Website
 
 ![React](https://img.shields.io/badge/React-19-blue)
@@ -344,7 +343,3 @@ This project is developed and maintained for Dominion City Alapere.
 ## Repository
 
 Repository: <https://github.com/dominioncityalapere/dcalapere_webapp>
-
-```
-
-```
