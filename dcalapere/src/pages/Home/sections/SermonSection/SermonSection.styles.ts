@@ -64,18 +64,18 @@ export const SectionSubTitle = styled.div`
 
 export const SermonBoxContainer = styled.div`
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
   gap: 2rem;
   justify-content: center;
   text-align: left;
   padding-bottom: 3rem;
 
   @media (min-width: 768px) {
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr repeat(1, 1fr);
   }
 
   @media (min-width: 1024px) {
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr repeat(3, 1fr);
   }
 `;
 
