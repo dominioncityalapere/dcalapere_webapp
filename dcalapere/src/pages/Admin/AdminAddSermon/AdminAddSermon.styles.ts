@@ -1,10 +1,21 @@
 import styled from "styled-components";
-import { theme } from "../../styles/theme";
+import { theme } from "../../../styles/theme";
+import welcomeBg from "../../../assets/images/welcomeBg.png";
+import { Link } from "react-router-dom";
 
 export const WhiteColor = "#FFFFFF";
 
-export const AdminContainer = styled.div`
-  background: ${theme.colors.primary};
+export const A = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+`;
+
+export const AddSermonContainer = styled.div`
+  background-image: url(${welcomeBg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +27,66 @@ export const AdminContainer = styled.div`
     gap: 1rem;
     padding-top: 0.6rem;
     width: 100%;
+
+    .alert {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 80%;
+      height: 20vh;
+      max-width: 400px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      padding: 0.5rem;
+      border-radius: 1rem;
+      font-weight: 500;
+
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+      @media (min-width: 768px) {
+        top: 20%;
+        height: 15vh;
+        max-width: 50rem;
+      }
+
+      @media (min-width: 1024px) {
+        top: 5%;
+        height: 10vh;
+      }
+    }
+
+    .alert.success {
+      background: #e8f8ee;
+      color: #0f7b3b;
+      border: 0.1rem solid #7bd88f;
+    }
+
+    .alert.error {
+      background: #fdecec;
+      color: #c62828;
+      border: 0.1rem solid #ef9a9a;
+    }
+
+    .alert.warning {
+      background: #fff8e1;
+      color: #8a6d00;
+      border: 0.1rem solid #ffd54f;
+    }
+
+    .alert button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: inherit;
+    }
 
     @media (min-width: 768px) {
       grid-template-columns: auto auto;
@@ -63,30 +134,6 @@ export const AdminContainer = styled.div`
     }
   }
 
-  .eventTitle {
-    width: 100%;
-  }
-
-  textarea {
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.black};
-    border: 0.1rem solid #d1d5db;
-    padding: 0.9rem 1rem;
-    border-radius: 0.7rem;
-    outline: none;
-    resize: none;
-    font-size: 1rem;
-
-    &::placeholder {
-      color: #9ca3af;
-    }
-
-    &:focus {
-      border-color: #072ac8;
-      box-shadow: 0 0 0 3px rgba(7, 42, 200, 0.15);
-    }
-  }
-
   button {
     background-color: ${theme.colors.black};
     color: ${theme.colors.white};
@@ -100,6 +147,12 @@ export const AdminContainer = styled.div`
       width: fit-content;
       font-size: 0.8rem;
     }
+  }
+
+  .note {
+    color: ${theme.colors.white};
+    text-align: left;
+    padding-top: 1.5rem;
   }
 `;
 

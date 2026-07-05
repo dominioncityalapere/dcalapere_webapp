@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import { theme } from "../../styles/theme";
+import { theme } from "../../../styles/theme";
+import welcomeBg from "../../../assets/images/welcomeBg.png";
 
 export const LoginContainer = styled.div`
-  background: ${theme.colors.primary};
+  background-image: url(${welcomeBg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +14,42 @@ export const LoginContainer = styled.div`
 
   h1 {
     padding-top: 4rem;
+  }
+
+  .alert {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.1rem;
+    border-radius: 1rem;
+    font-weight: 500;
+  }
+
+  .alert.success {
+    background: #e8f8ee;
+    color: #0f7b3b;
+    border: 0.1rem solid #7bd88f;
+  }
+
+  .alert.error {
+    background: #fdecec;
+    color: #c62828;
+    border: 0.1rem solid #ef9a9a;
+  }
+
+  .alert.warning {
+    background: #fff8e1;
+    color: #8a6d00;
+    border: 0.1rem solid #ffd54f;
+  }
+
+  .alert button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
   }
 
   form {

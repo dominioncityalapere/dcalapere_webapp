@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef } from "react";
-import { supabase } from "../../services/supabase";
-import { AdminContainer, Header, WhiteColor } from "../Admin/AdminDashboard";
+import { supabase } from "../../../services/supabase";
+import {
+  AddEventContainer,
+  Header,
+  WhiteColor,
+  A,
+} from "./AdminAddEvent.styles";
 import { useNavigate } from "react-router-dom";
-import dc_logo_white from "../../assets/icons/dc_logo_white.png";
-import { createSermon } from "../../services/sermons.service";
+import dc_logo_white from "../../../assets/icons/dc_logo_white.png";
 
-const AdminDashboard = () => {
-  const [title, setTitle] = useState("");
-  const [preacher, setPreacher] = useState("");
-  const [theme, setTheme] = useState("");
-  const [youtube_url, setYoutubeUrl] = useState("");
-  const [date, setDate] = useState("");
-
+const AdminAddEvent = () => {
+  // Form state
   const [eventTitle, setEventTitle] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
@@ -19,10 +18,18 @@ const AdminDashboard = () => {
   const [eventThumbnail, setEventThumbnail] = useState<File | null>(null);
   const [eventDescription, setEventDescription] = useState("");
 
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
   const navigate = useNavigate();
 
+  //   Global alert state for success, warning, and error messages
+  const [alert, setAlert] = useState<{
+    type: "success" | "error" | "warning";
+    message: string;
+  } | null>(null);
+
+  // Reference used to reset the file input after a successful upload
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Redirect unauthenticated users to the admin login page
   useEffect(() => {
     const checkUser = async () => {
       const { data } = await supabase.auth.getUser();
@@ -35,60 +42,46 @@ const AdminDashboard = () => {
     checkUser();
   }, []);
 
+  // Sign out the current admin and redirect to the event access page
   const logout = async () => {
     await supabase.auth.signOut();
-    window.location.href = "/dcalapere-access-26";
+    window.location.href = "/dcalapere-access-26-add-event";
   };
 
-  const handleSermonSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const { error } = await createSermon({
-      theme,
-      title,
-      preacher,
-      date,
-      youtube_url: youtube_url,
-    });
-
-    if (error) {
-      console.log(error);
-      alert("Failed");
-      return;
-    }
-
-    alert("Sermon added");
-
-    setTitle("");
-    setPreacher("");
-    setTheme("");
-    setYoutubeUrl("");
-    setDate("");
-  };
-
+  // Upload event image to Supabase Storage and save event details to the database
   const handleEventSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!eventThumbnail) return;
 
+    // Prevent uploads larger than 2 MB
     const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
     if (eventThumbnail.size > MAX_FILE_SIZE) {
-      alert("File must be less than 2MB");
+      setAlert({
+        type: "warning",
+        message: "File must be less than 2MB.",
+      });
       return;
     }
 
+    // Allow only supported image formats
     const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
 
     if (!allowedTypes.includes(eventThumbnail.type)) {
-      alert("Only JPG, PNG, and WEBP allowed");
+      setAlert({
+        type: "warning",
+        message: "Only JPG, PNG, and WEBP allowed",
+      });
       return;
     }
 
     const fileExt = eventThumbnail.name.split(".").pop();
 
+    // Generate a unique filename to prevent collisions
     const fileName = `${Date.now()}-${fileExt}`;
 
+    // Upload the selected image to the "events" storage bucket
     const { error: uploadError } = await supabase.storage
       .from("events")
       .upload(fileName, eventThumbnail);
@@ -98,10 +91,17 @@ const AdminDashboard = () => {
       return;
     }
 
+    // Retrieve the public URL for the uploaded image
     const { data } = supabase.storage.from("events").getPublicUrl(fileName);
 
     const imageUrl = data.publicUrl;
 
+    // Clear the selected file after a successful upload
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+
+    // Save the event information to the database
     const { error } = await supabase.from("events").insert([
       {
         title: eventTitle,
@@ -115,22 +115,24 @@ const AdminDashboard = () => {
 
     if (error) {
       console.log(error);
-      alert("Failed to uplaod event");
+      setAlert({
+        type: "error",
+        message: "Failed to upload event",
+      });
       return;
     }
 
-    alert("Event upload successfully");
+    setAlert({
+      type: "success",
+      message: "Event uploaded successfully",
+    });
 
+    // Clear the form after a successful upload
     setEventTitle("");
     setEventDate("");
     setEventTime("");
     setEventLocation("");
     setEventDescription("");
-
-    if (eventTitle.trim().length > 30) {
-      alert("Title cannot exceed 30 characters");
-      return;
-    }
   };
 
   // Automatically logs out admin after 5 minutes of inactivity or when user leaves the tab
@@ -143,6 +145,7 @@ const AdminDashboard = () => {
       navigate("/dcalapere-login-26");
     };
 
+    // Reset the inactivity timer whenever the admin interacts with the page
     const resetTimer = () => {
       clearTimeout(timeout);
 
@@ -154,19 +157,20 @@ const AdminDashboard = () => {
       );
     };
 
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        logoutUser();
-      }
-    };
+    // const handleVisibilityChange = () => {
+    //   if (document.hidden) {
+    //     logoutUser();
+    //   }
+    // };
 
+    // Listen for user activity that should keep the session active
     const events = ["mousemove", "keydown", "click", "touchstart"];
 
     events.forEach((event) => {
       window.addEventListener(event, resetTimer);
     });
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    // document.addEventListener("visibilitychange", handleVisibilityChange);
 
     resetTimer();
 
@@ -177,18 +181,32 @@ const AdminDashboard = () => {
         window.removeEventListener(event, resetTimer);
       });
 
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      // document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
+  // Automatically dismiss alerts after 3 seconds
+  useEffect(() => {
+    if (!alert) return;
+
+    const timer = setTimeout(() => {
+      setAlert(null);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [alert]);
+
   return (
-    <AdminContainer style={{ padding: "2rem" }}>
-      <Header>
+    <AddEventContainer style={{ padding: "0 2rem" }}>
+      <Header style={{ padding: "2rem 0" }}>
         <div className="adminHeader">
           <img src={dc_logo_white} alt="DC White Logo" />
           <p>DC Alapere</p>
         </div>
         <div>
+          <A to="/dcalapere-access-26" style={{ paddingRight: "1rem" }}>
+            <button>Back</button>
+          </A>
           <button onClick={logout}>Log out</button>
         </div>
       </Header>
@@ -201,57 +219,24 @@ const AdminDashboard = () => {
           lineHeight: 1.3,
         }}
       >
-        Admin Dashboard
+        Add Event
       </h1>
 
-      <h2 style={{ paddingTop: "2rem" }}>Add Sermon</h2>
+      {/* Event upload form */}
 
-      <form onSubmit={handleSermonSubmit}>
-        <input
-          className="full"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+      <form onSubmit={handleEventSubmit} className="formContainer">
+        {/* Display success, warning, or error messages */}
+        <>
+          {alert && (
+            <div className={`alert ${alert.type}`}>
+              <button onClick={() => setAlert(null)}>X</button>
 
-        <input
-          placeholder="Theme"
-          value={theme}
-          onChange={(e) => setTheme(e.target.value)}
-          required
-        />
+              <span>{alert.message}</span>
+            </div>
+          )}
+        </>
 
-        <input
-          placeholder="Preacher"
-          value={preacher}
-          onChange={(e) => setPreacher(e.target.value)}
-          required
-        />
-
-        <input
-          placeholder="YouTube URL"
-          value={youtube_url}
-          onChange={(e) => setYoutubeUrl(e.target.value)}
-          required
-        />
-
-        <input
-          placeholder="Date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-
-        <button type="submit">Upload Sermon</button>
-      </form>
-
-      <div className="border"></div>
-
-      {/* ADD EVENT */}
-
-      <h2 style={{ paddingTop: "2rem" }}>Add Event</h2>
-      <form onSubmit={handleEventSubmit}>
+        {/* Event title with live character counter */}
         <div className="full">
           <input
             className="eventTitle"
@@ -262,23 +247,26 @@ const AdminDashboard = () => {
             required
           />
 
-          <p>{eventTitle.length}/30</p>
+          <p className="charCount">{eventTitle.length}/30</p>
         </div>
 
+        {/* Event date */}
         <input
-          placeholder="Date (eg. 21 March 2026)"
+          type="date"
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
           required
         />
 
+        {/* Event time */}
         <input
-          placeholder="Time (eg. 11:00 or 23:00)"
+          type="time"
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
           required
         />
 
+        {/* Event location */}
         <input
           placeholder="Location"
           value={eventLocation}
@@ -286,6 +274,7 @@ const AdminDashboard = () => {
           required
         />
 
+        {/* Event thumbnail image */}
         <input
           ref={fileInputRef}
           type="file"
@@ -298,20 +287,34 @@ const AdminDashboard = () => {
           required
         />
 
-        <textarea
-          className="full"
-          placeholder="Description"
-          value={eventDescription}
-          onChange={(e) => setEventDescription(e.target.value)}
-          maxLength={150}
-          rows={3}
-          required
-        />
+        {/* Event description */}
+        <div className="full">
+          <textarea
+            className="eventDescription"
+            placeholder="Description"
+            value={eventDescription}
+            onChange={(e) => setEventDescription(e.target.value)}
+            maxLength={150}
+            rows={3}
+            required
+          />
+
+          <p className="charCount">{eventDescription.length}/150</p>
+        </div>
 
         <button type="submit">Upload Event</button>
       </form>
-    </AdminContainer>
+
+      {/* Reminder for administrators before publishing */}
+      <div className="note">
+        <p>Note:</p>
+        <p>
+          Changes made here are immediately visible on the website. Please
+          review all information carefully before publishing.
+        </p>
+      </div>
+    </AddEventContainer>
   );
 };
 
-export default AdminDashboard;
+export default AdminAddEvent;

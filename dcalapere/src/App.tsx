@@ -7,8 +7,10 @@ import ServiceTimeSection from "./pages/Home/sections/ServiceTimeSection/Service
 import DailyDevotional from "./pages/Home/sections/DailyDevotional/DailyDevotional.tsx";
 import SermonSection from "./pages/Home/sections/SermonSection/SermonSection.tsx";
 import EventsSection from "./pages/Home/sections/EventsSection/EventsSection.tsx";
-import AdminDashboard from "./pages/Admin/AdminDashboard.tsx";
-import AdminLogin from "./pages/Admin/AdminLogin.tsx";
+import AdminDashboard from "./pages/Admin/AdminDashboard/AdminDashboard.tsx";
+import AdminLogin from "./pages/Admin/AdminLogin/AdminLogin.tsx";
+import AdminAddSermon from "./pages/Admin/AdminAddSermon/AdminAddSermon.tsx";
+import AdminAddEvent from "./pages/Admin/AdminAddEvent/AdminAddEvent.tsx";
 import WelcomeSection from "./pages/Home/sections/WelcomeSection/WelcomeSection.tsx";
 import Footer from "./layouts/Footer.tsx";
 
@@ -16,8 +18,8 @@ import ScrollToTop from "./components/common/ScrollToTop.tsx";
 import AboutPage from "./pages/About/AboutPage.tsx";
 import EventsPage from "./pages/Events/EventsPage.tsx";
 import SermonsPage from "./pages/Sermons/SermonsPage.tsx";
-import SermonDetails from "./pages/Sermons/SermonDetails.tsx"
-import ContactPage from "./pages/Contact/ContactPage.tsx"
+import SermonDetails from "./pages/Sermons/SermonDetails.tsx";
+import ContactPage from "./pages/Contact/ContactPage.tsx";
 import GivePage from "./pages/Give/GivePage.tsx";
 import PlanPage from "./pages/Plan/PlanPage.tsx";
 
@@ -45,7 +47,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-
         <Route path="/about" element={<AboutPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/sermons" element={<SermonsPage />} />
@@ -53,9 +54,16 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/give" element={<GivePage />} />
         <Route path="/plan" element={<PlanPage />} />
-
         <Route path="/dcalapere-login-26" element={<AdminLogin />} />
         <Route path="/dcalapere-access-26" element={<AdminDashboard />} />
+        <Route
+          path="/dcalapere-access-26-add-sermon"
+          element={<AdminAddSermon />}
+        />
+        <Route
+          path="/dcalapere-access-26-add-event"
+          element={<AdminAddEvent />}
+        />
       </Routes>
     </BrowserRouter>
   );
