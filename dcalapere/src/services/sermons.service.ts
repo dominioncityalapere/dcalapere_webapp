@@ -27,6 +27,20 @@ export const getSermonsSection = async () => {
   return data;
 };
 
+export const getSermonsPage = async () => {
+  const { data, error } = await supabase
+    .from("sermons")
+    .select("*")
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    console.log(error);
+    return [];
+  }
+
+  return data;
+};
+
 export const getSermonById = async (id: string) => {
   const { data, error } = await supabase
     .from("sermons")

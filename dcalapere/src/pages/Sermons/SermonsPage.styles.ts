@@ -3,9 +3,7 @@ import { theme } from "../../styles/theme";
 import { Link } from "react-router-dom";
 import welcomeBg from "../../assets/images/welcomeBg.png";
 
-export const LastestSermon = styled.div`
-  background: ${theme.colors.white};
-
+export const SermonContainer = styled.div`
   .sermonHeader {
     background: ${theme.colors.darkBg};
     color: ${theme.colors.white};
@@ -34,6 +32,31 @@ export const LastestSermon = styled.div`
       font-size: 4rem;
     }
   }
+`;
+
+export const LastestSermon = styled.div`
+  background: ${theme.colors.white};
+
+  .latestSermon {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 3rem;
+    padding: 1rem;
+
+    @media (min-width: 768px) {
+      padding: 3rem 1rem;
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr repeat(3, 1fr);
+      margin: 0 10rem;
+
+      .full {
+        grid-column: 1 / -1;
+        justify-content: center;
+      }
+    }
+  }
 
   .latestMessage {
     font-size: 1.2rem;
@@ -50,27 +73,6 @@ export const LastestSermon = styled.div`
     @media (min-width: 1024px) {
       padding: 5rem 2rem 0 2rem;
       margin-left: 10rem;
-    }
-  }
-
-  .latestSermon {
-    display: grid;
-    grid-template-columns: auto;
-    gap: 3rem;
-    padding: 1rem;
-
-    @media (min-width: 768px) {
-      padding: 3rem 1rem;
-    }
-
-    @media (min-width: 1024px) {
-      grid-template-columns: 1fr repeat(2, 1fr);
-      margin: 0 10rem;
-
-      .full {
-        grid-column: 1 / -1;
-        justify-content: center;
-      }
     }
   }
 
@@ -94,6 +96,7 @@ export const LastestSermon = styled.div`
       position: relative;
       overflow: hidden;
       width: 100%;
+      cursor: pointer;
 
       .eventImageSidebar {
         width: 100%;
@@ -175,15 +178,15 @@ export const LastestSermon = styled.div`
 
 export const RecentSermon = styled.div`
   background: ${theme.colors.offWhite};
-  padding: 3rem 1rem;
   color: ${theme.colors.black};
+  padding: 3rem 1rem;
   text-align: left;
 
   @media (min-width: 1024px) {
     padding: 3rem 10rem;
   }
 
-  .recentSermon {
+  .recentSermonHeader {
     font-size: 1.2rem;
     font-weight: bold;
     color: ${theme.colors.black};
@@ -199,6 +202,45 @@ export const RecentSermon = styled.div`
       padding: 0 0 3rem 2rem;
     }
   }
+
+  .recentSermon {
+    display: grid;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .loadMoreButton {
+    color: ${theme.colors.white};
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem 0 0 0;
+
+    .allSermonButton {
+      width: fit-content;
+      border: 0.1rem solid ${theme.colors.primary};
+      border-radius: 2rem;
+      color: ${theme.colors.primary};
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+
+      @media (min-width: 768px) {
+        font-size: 1rem;
+        padding: 0.4rem 2rem;
+      }
+
+      &:hover {
+        color: ${theme.colors.white};
+        background: ${theme.colors.primary};
+      }
+    }
+  }
 `;
 
 export const SermonBox = styled.div`
@@ -206,7 +248,6 @@ export const SermonBox = styled.div`
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 
   @media (min-width: 1024px) {
     max-width: 20rem;
@@ -218,6 +259,7 @@ export const SermonBox = styled.div`
     height: 11rem;
     width: 100%;
     border-radius: 2rem 2rem 0 0;
+    cursor: pointer;
 
     .sermonImg {
       width: 100%;
@@ -278,36 +320,6 @@ export const SermonBoxText = styled.div`
   }
 `;
 
-export const A = styled(Link)`
-  color: ${theme.colors.white};
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5rem 0 0 0;
-
-  .allSermonButton {
-    width: fit-content;
-    border: 0.1rem solid ${theme.colors.primary};
-    border-radius: 2rem;
-    color: ${theme.colors.primary};
-    padding: 0.4rem 1rem;
-    font-size: 0.8rem;
-
-    @media (min-width: 768px) {
-      font-size: 1rem;
-      padding: 0.4rem 2rem;
-    }
-
-    &:hover {
-      color: ${theme.colors.white};
-      background: ${theme.colors.primary};
-    }
-  }
-`;
-
 export const SermonDetailsContainer = styled.div`
   min-height: 100dvh;
   display: flex;
@@ -321,6 +333,10 @@ export const SermonDetailsContainer = styled.div`
   background-repeat: no-repeat;
   padding: 2rem;
   color: ${theme.colors.black};
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
 
   .closeButton {
     display: flex;
