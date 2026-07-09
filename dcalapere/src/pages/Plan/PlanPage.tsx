@@ -18,11 +18,13 @@ function PlanPage() {
       <NavBar />
 
       <main>
+        {/* Plan your visit page */}
         <PlanContainer>
           <div className="contactTitleContainer">
             <p className="title">Plan Your Visit</p>
             <p>We can't wait to meet you!</p>
           </div>
+          {/* What to expect section */}
           <div className="expectContainer">
             <p className="expectTitle">What to Expect</p>
             <p>
@@ -32,7 +34,9 @@ function PlanPage() {
               connect with people, and grow in faith.
             </p>
 
+            {/* Visitor highlights */}
             <div className="expectContentContainer">
+              {/* Warm welcome */}
               <div className="eachExpectContent">
                 <p>
                   <Check
@@ -52,6 +56,7 @@ function PlanPage() {
                 </p>
               </div>
 
+              {/* Powerful worship */}
               <div className="eachExpectContent">
                 <p>
                   <Check
@@ -70,6 +75,7 @@ function PlanPage() {
                 </p>
               </div>
 
+              {/* Life-changing teaching */}
               <div className="eachExpectContent">
                 <p>
                   <Check
@@ -88,6 +94,7 @@ function PlanPage() {
                 </p>
               </div>
 
+              {/* Children's ministry */}
               <div className="eachExpectContent">
                 <p>
                   <Check
@@ -115,6 +122,7 @@ function PlanPage() {
             <p>Join us for worship. We'd love to have you!</p>
 
             <div className="serviceTimeContentContainer">
+              {/* Sunday service */}
               <div className="eachserviceTimeContent">
                 <div>
                   <p>
@@ -143,6 +151,7 @@ function PlanPage() {
                 </div>
               </div>
 
+              {/* Wednesday service */}
               <div className="eachserviceTimeContent">
                 <div>
                   <p>
@@ -171,6 +180,7 @@ function PlanPage() {
                 </div>
               </div>
 
+              {/* Friday meeting */}
               <div className="eachserviceTimeContent">
                 <div>
                   <p>
@@ -203,10 +213,12 @@ function PlanPage() {
           {/* LOCATION & DIRECTIONS */}
 
           <div className="locationContainer">
+            {/* Location details */}
             <div className="locationContentContainer">
               <p className="locationTitle">Location & Directions</p>
 
               <div>
+                {/* Church address */}
                 <div className="eachLocationContent">
                   <p>
                     <MapPin
@@ -226,6 +238,7 @@ function PlanPage() {
                   </div>
                 </div>
 
+                {/* Parking information */}
                 <div className="eachLocationContent">
                   <p>
                     <ArrowRightLeft
@@ -243,6 +256,7 @@ function PlanPage() {
                   </div>
                 </div>
 
+                {/* Typical service duration */}
                 <div className="eachLocationContent">
                   <p>
                     <Clock6
@@ -260,6 +274,7 @@ function PlanPage() {
                   </div>
                 </div>
 
+                {/* Google Maps directions */}
                 <div className="directionButton">
                   <a
                     href="https://maps.app.goo.gl/XqXhTm6ebRER57uc9"
@@ -274,6 +289,7 @@ function PlanPage() {
               </div>
             </div>
 
+            {/* Embedded Google Map */}
             <div className="embeddedMap">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.4818346952557!2d3.396170875816837!3d6.586871122421971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b92ed00000001%3A0x2d62ba9f817d94ad!2sTantalizers%20Alapere%20Ketu!5e0!3m2!1sen!2sng!4v1782055007128!5m2!1sen!2sng"
@@ -287,8 +303,7 @@ function PlanPage() {
             </div>
           </div>
 
-          {/* MEET YOU */}
-
+          {/* Final call to action */}
           <div className="meetYouContainer">
             <div className="meetYouContent">
               <div>
@@ -303,6 +318,7 @@ function PlanPage() {
                 </p>
               </div>
 
+              {/* Quick navigation buttons */}
               <div className="meetYouButtons">
                 <A to="/contact" className="contactButton">
                   <span>Contact Us</span>

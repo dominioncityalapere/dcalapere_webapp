@@ -1,9 +1,15 @@
 import { Clock6, Clock8 } from "lucide-react";
 import { theme } from "../../../../styles/theme";
-import { PlanButton, A, BgColor, ServiceContent } from "./ServiceTimeSection.styles";
+import {
+  PlanButton,
+  A,
+  BgColor,
+  ServiceContent,
+} from "./ServiceTimeSection.styles";
 
 const ServiceTimeSection = () => {
   return (
+    // Service times section
     <BgColor id="services">
       <ServiceContent>
         <p className="sectionTitle">Service Times</p>
@@ -12,7 +18,9 @@ const ServiceTimeSection = () => {
           us.
         </p>
 
+        {/* Weekly service schedule */}
         <div className="servicesTimeWrapper">
+          {/* Sunday service */}
           <div className="servicesTime">
             <Clock8
               style={{
@@ -32,6 +40,7 @@ const ServiceTimeSection = () => {
             </p>
           </div>
 
+          {/* Wednesday service */}
           <div className="servicesTime">
             <Clock6
               style={{
@@ -51,6 +60,7 @@ const ServiceTimeSection = () => {
             </p>
           </div>
 
+          {/* Friday service */}
           <div className="servicesTime">
             <Clock6
               style={{
@@ -71,6 +81,7 @@ const ServiceTimeSection = () => {
           </div>
         </div>
 
+        {/* Link to the Plan Your Visit page */}
         <A to="/plan">
           <PlanButton
             style={{

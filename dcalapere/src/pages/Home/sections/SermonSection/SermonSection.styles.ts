@@ -86,7 +86,6 @@ export const SermonBox = styled.div`
 
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 
   .sermon-image-wrapper {
     position: relative;
@@ -94,6 +93,7 @@ export const SermonBox = styled.div`
     height: 11rem;
     width: 100%;
     border-radius: 2rem 2rem 0 0;
+    cursor: pointer;
 
     .sermonImg {
       width: 100%;

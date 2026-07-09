@@ -8,10 +8,13 @@ import { theme } from "../../styles/theme";
 function AboutPage() {
   return (
     <>
+      {/* Website navigation */}
       <NavBar />
 
+      {/* Main page content */}
       <main>
         <AboutContainer>
+          {/* About page header */}
           <div className="aboutTitleContainer">
             <p className="title">About Us</p>
             <p>
@@ -20,9 +23,12 @@ function AboutPage() {
             </p>
           </div>
 
+          {/* About page content */}
           <div className="aboutContent">
+            {/* Church overview and key focus areas */}
             <div>
               <div className="leftGridContentA">
+                {/* Core values */}
                 <div>
                   <HeartHandshake
                     style={{
@@ -42,6 +48,7 @@ function AboutPage() {
                   </p>
                 </div>
 
+                {/* Leadership Institute */}
                 <div>
                   <HeartHandshake
                     style={{
@@ -64,6 +71,7 @@ function AboutPage() {
                 </div>
               </div>
 
+              {/* Statement of faith */}
               <div className="leftGridContentB">
                 <div>
                   <HeartHandshake
@@ -85,6 +93,7 @@ function AboutPage() {
                   </p>
                 </div>
 
+                {/* Church ministries */}
                 <div>
                   <HeartHandshake
                     style={{
@@ -108,11 +117,14 @@ function AboutPage() {
               </div>
             </div>
 
+            {/* Founder profile */}
             <div className="rightGridContentContainer">
+              {/* Founder portrait */}
               <div>
                 <img src={Dr_David_Ogbueli} alt="" />
               </div>
 
+              {/* Founder biography */}
               <div className="rightGridContentB">
                 <p
                   style={{
@@ -146,6 +158,7 @@ function AboutPage() {
         </AboutContainer>
       </main>
 
+      {/* Website footer */}
       <Footer />
     </>
   );

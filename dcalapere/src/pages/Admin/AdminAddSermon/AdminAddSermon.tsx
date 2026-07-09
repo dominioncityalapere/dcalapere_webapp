@@ -166,7 +166,7 @@ const AdminAddSermon = () => {
           <p>DC Alapere</p>
         </div>
         <div>
-          <A to="/dcalapere-access-26" style={{ paddingRight: "1rem" }}>
+          <A to="/dcalapere-access-26" style={{ paddingRight: "0.5rem" }}>
             <button>Back</button>
           </A>
           <button onClick={logout}>Log out</button>
@@ -232,7 +232,9 @@ const AdminAddSermon = () => {
 
         {/* Sermon date */}
         <input
+          className="eventForms"
           type="date"
+          placeholder="Date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
