@@ -24,7 +24,7 @@ export const AddEventContainer = styled.div`
 
   form {
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr;
     gap: 1rem;
     padding-top: 0.6rem;
 
@@ -46,9 +46,13 @@ export const AddEventContainer = styled.div`
         pointer-events: none;
       }
 
-      .eventforms {
-        width: auto;
+      .eventForms {
+        width: 100%;
       }
+    }
+
+    .eventForms {
+      width: auto;
     }
 
     .formContainer {
@@ -116,14 +120,14 @@ export const AddEventContainer = styled.div`
     }
 
     @media (min-width: 768px) {
-      grid-template-columns: auto auto;
+      grid-template-columns: 1fr 1fr;
       row-gap: 1rem;
       column-gap: 2rem;
       padding-top: 1rem;
     }
 
     @media (min-width: 1024px) {
-      width: 50%;
+      width: auto;
       padding-top: 2rem;
     }
   }
@@ -136,7 +140,6 @@ export const AddEventContainer = styled.div`
     border-radius: 0.7rem;
     outline: none;
     font-size: 1rem;
-    width:;
 
     &::placeholder {
       color: #9ca3af;
