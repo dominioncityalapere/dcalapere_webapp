@@ -239,7 +239,7 @@ const AdminAddEvent = () => {
         {/* Event title with live character counter */}
         <div className="full">
           <input
-            className="eventforms"
+            className="eventForms"
             placeholder="Title"
             value={eventTitle}
             onChange={(e) => setEventTitle(e.target.value)}
@@ -252,7 +252,7 @@ const AdminAddEvent = () => {
 
         {/* Event date */}
         <input
-          className="eventforms"
+          className="eventForms"
           type="date"
           placeholder="Date"
           value={eventDate}
@@ -262,7 +262,7 @@ const AdminAddEvent = () => {
 
         {/* Event time */}
         <input
-          className="eventforms"
+          className="eventForms"
           type="time"
           placeholder="Time"
           value={eventTime}
@@ -272,6 +272,7 @@ const AdminAddEvent = () => {
 
         {/* Event location */}
         <input
+          className="eventForms"
           placeholder="Location"
           value={eventLocation}
           onChange={(e) => setEventLocation(e.target.value)}
@@ -280,6 +281,7 @@ const AdminAddEvent = () => {
 
         {/* Event thumbnail image */}
         <input
+          className="eventForms"
           ref={fileInputRef}
           type="file"
           accept="image/*"
@@ -294,7 +296,7 @@ const AdminAddEvent = () => {
         {/* Event description */}
         <div className="full">
           <textarea
-            className="eventforms"
+            className="eventForms"
             placeholder="Description"
             value={eventDescription}
             onChange={(e) => setEventDescription(e.target.value)}
