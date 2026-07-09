@@ -47,7 +47,7 @@ export const AddEventContainer = styled.div`
       }
 
       .eventforms {
-        width: 100%;
+        width: auto;
       }
     }
 
