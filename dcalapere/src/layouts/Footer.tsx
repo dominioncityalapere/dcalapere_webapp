@@ -10,11 +10,15 @@ import {
 } from "./Footer";
 
 const Footer = () => {
+  // Current year displayed in the copyright notice
   const currentYear: number = new Date().getFullYear();
 
   return (
+    // Website footer
     <BgColor>
+      {/* Main footer content */}
       <FooterContentA>
+        {/* Church branding and social media links */}
         <div className="firstGrid full">
           <div>
             <div className="firstGridText">
@@ -26,6 +30,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Social media links */}
           <div className="socialMediaIconsContainer">
             <a
               href="https://web.facebook.com/groups/264198328180602"
@@ -51,6 +56,7 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Quick links for connecting with the church */}
         <div className="secondGrid">
           <p style={{ color: theme.colors.white, fontWeight: "bold" }}>
             Connect
@@ -73,6 +79,7 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Resources for spiritual growth */}
         <div className="thirdGrid">
           <p style={{ color: theme.colors.white, fontWeight: "bold" }}>Grow</p>
           <div>
@@ -93,6 +100,7 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Additional church resources */}
         <div className="fourthGrid">
           <p style={{ color: theme.colors.white, fontWeight: "bold" }}>
             Resources
@@ -105,9 +113,12 @@ const Footer = () => {
         </div>
       </FooterContentA>
 
+      {/* Footer section divider */}
       <Border></Border>
 
+      {/* Service times, contact details, and church location */}
       <FooterContentB>
+        {/* Weekly service schedule */}
         <div>
           <p className="headerContentB">SERVICE TIMES</p>
           <p>Sunday: 8:00 AM - 11:30 AM</p>
@@ -115,12 +126,14 @@ const Footer = () => {
           <p>Friday: 6:30 PM - 8:30 PM</p>
         </div>
 
+        {/* Church contact information */}
         <div>
           <p className="headerContentB">CONTACT</p>
           <p>dominioncityalapere@gmail.com</p>
           <p>(234) 803 773 8621</p>
         </div>
 
+        {/* Church address */}
         <div>
           <p className="headerContentB">LOCATION</p>
           <p>
@@ -130,15 +143,19 @@ const Footer = () => {
         </div>
       </FooterContentB>
 
+      {/* Footer section divider */}
       <Border></Border>
 
+      {/* Copyright and legal information */}
       <FooterContentC>
         <div>
+          {/* Copyright notice */}
           <p className="copyright">
             Copyright © {currentYear} Dominion City Church Alapere
           </p>
         </div>
 
+        {/* Privacy policy */}
         <div className="textContentC">
           <a
             href="https://www.dominioncity.cc/privacy"

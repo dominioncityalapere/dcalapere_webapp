@@ -20,14 +20,23 @@ import {
 } from "./NavBar";
 
 const NavBar = () => {
+  // Mobile menu visibility state
   const [isOpen, setIsOpen] = useState(false);
+
+  // References used to detect clicks outside the mobile menu
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<SVGSVGElement>(null);
+
+  // Toggle the mobile menu
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Close the mobile menu
   const closeMenu = () => setIsOpen(false);
+
+  // Tracks whether the page has been scrolled
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Close menu if clicked outside
+  // Close the mobile menu when clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -45,6 +54,7 @@ const NavBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  // Update the navigation bar style based on the scroll position
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -55,8 +65,10 @@ const NavBar = () => {
   }, []);
 
   return (
+    // Main navigation bar
     <NavBarContainer $isScrolled={isScrolled}>
       <MainMenu>
+        {/* Website logo and home link */}
         <MenuLogo>
           <A
             to="/"
@@ -74,6 +86,7 @@ const NavBar = () => {
           </A>
         </MenuLogo>
 
+        {/* Desktop navigation links */}
         <MenuList>
           <A to="/about" className="menuList">
             <span>About</span>
@@ -84,7 +97,7 @@ const NavBar = () => {
           <A to="/events" className="menuList">
             <span>Events</span>
           </A>
-          <A to="/sermons" className="menuList"> 
+          <A to="/sermons" className="menuList">
             <span>Sermons</span>
           </A>
           <A to="/contact" className="menuList">
@@ -92,6 +105,7 @@ const NavBar = () => {
           </A>
         </MenuList>
 
+        {/* Desktop action buttons */}
         <MenuListII>
           <A to="/give">
             <GiveButton
@@ -119,7 +133,9 @@ const NavBar = () => {
           </A>
         </MenuListII>
 
+        {/* Mobile navigation controls */}
         <MenuToggle>
+          {/* Show Give and Plan Your Visit buttons on larger mobile screens */}
           <RemoveGPButton>
             <A to="/give">
               <GiveButton
@@ -147,6 +163,7 @@ const NavBar = () => {
             </A>
           </RemoveGPButton>
 
+          {/* Mobile menu toggle button */}
           <Menu
             ref={buttonRef}
             onClick={toggleMenu}
@@ -155,6 +172,7 @@ const NavBar = () => {
         </MenuToggle>
       </MainMenu>
 
+      {/* Mobile navigation menu */}
       {isOpen && (
         <MobileMenuWrapper
           ref={menuRef}
@@ -168,6 +186,7 @@ const NavBar = () => {
             zIndex: 10,
           }}
         >
+          {/* Mobile navigation links */}
           <MobileMenuContent>
             <A to="/about" onClick={closeMenu} className="mobileMenuList">
               <span>About</span>
@@ -185,12 +204,15 @@ const NavBar = () => {
               <span>Contact</span>
             </A>
 
+            {/* Divider between navigation links and action buttons */}
             <MobileMenuContentBorder></MobileMenuContentBorder>
 
+            {/* Mobile Plan Your Visit button */}
             <A to="/plan" onClick={closeMenu}>
               <div className="mobileMenuListPlan">Plan Your Visit</div>
             </A>
 
+            {/* Mobile Give button */}
             <A to="/give" onClick={closeMenu}>
               <div className="mobileMenuListGive">Give</div>
             </A>

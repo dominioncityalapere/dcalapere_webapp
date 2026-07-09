@@ -3,13 +3,16 @@ import Footer from "../../layouts/Footer.tsx";
 import { MapPin, Clock4, Phone, Mail } from "lucide-react";
 import { ContactContainer, MapContainer, A } from "./ContactPage.styles.ts";
 
-function AboutPage() {
+function ContactPage() {
   return (
     <>
+      {/* Website navigation */}
       <NavBar />
 
+      {/* Main page content */}
       <main>
         <ContactContainer>
+          {/* Contact page header */}
           <div className="contactTitleContainer">
             <p className="title">Contact Us</p>
             <p>
@@ -18,7 +21,9 @@ function AboutPage() {
             </p>
           </div>
 
+          {/* Church contact information */}
           <div className="contactContent">
+            {/* Weekly service schedule */}
             <div>
               <p>
                 <Clock4 />
@@ -29,6 +34,7 @@ function AboutPage() {
               <p>Friday: 6:30 PM - 8:30 PM</p>
             </div>
 
+            {/* Church location */}
             <div>
               <p>
                 <MapPin />
@@ -39,6 +45,7 @@ function AboutPage() {
               <p>Roundabout, Lagos</p>
             </div>
 
+            {/* Church phone number */}
             <div>
               <p>
                 <Phone />
@@ -47,6 +54,7 @@ function AboutPage() {
               <p>(234) 803 773 8621</p>
             </div>
 
+            {/* Church email address */}
             <div>
               <p>
                 <Mail />
@@ -56,6 +64,7 @@ function AboutPage() {
             </div>
           </div>
 
+          {/* Social media links */}
           <div>
             <p className="followUsTitle">FOLLOW US</p>
             <div className="socialMediaIconsContainer">
@@ -84,6 +93,7 @@ function AboutPage() {
           </div>
         </ContactContainer>
 
+        {/* Embedded Google Map showing the church location */}
         <MapContainer>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.4818346952557!2d3.396170875816837!3d6.586871122421971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b92ed00000001%3A0x2d62ba9f817d94ad!2sTantalizers%20Alapere%20Ketu!5e0!3m2!1sen!2sng!4v1782055007128!5m2!1sen!2sng"
@@ -97,9 +107,10 @@ function AboutPage() {
         </MapContainer>
       </main>
 
+      {/* Website footer */}
       <Footer />
     </>
   );
 }
 
-export default AboutPage;
+export default ContactPage;

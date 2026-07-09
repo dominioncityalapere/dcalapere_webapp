@@ -10,13 +10,16 @@ import {
 
 const WelcomeSection = () => {
   return (
+    // Welcome section
     <BgColor>
       <WelcomeContent>
         <div>
+          {/* Church logo */}
           <div>
             <img src={dc_logo_white} alt="DC Logo White" />
           </div>
 
+          {/* Welcome message */}
           <div>
             <p className="welcomeTitle">You're Welcome Here</p>
             <p className="welcomeSubTitle">
@@ -28,7 +31,9 @@ const WelcomeSection = () => {
             </p>
           </div>
 
+          {/* Call-to-action buttons */}
           <div className="welcomeButton">
+            {/* Link to the Plan Your Visit page */}
             <A to="/plan">
               <PlanButton
                 style={{
@@ -39,6 +44,7 @@ const WelcomeSection = () => {
               </PlanButton>
             </A>
 
+            {/* Link to the Contact page */}
             <A to="/contact">
               <ContactButton
                 style={{

@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 
+// Creates a new sermon record in the database.
 export const createSermon = async (sermon: {
   theme: string;
   title: string;
@@ -12,6 +13,7 @@ export const createSermon = async (sermon: {
   return { data, error };
 };
 
+// Retrieves the latest four sermons for the homepage section.
 export const getSermonsSection = async () => {
   const { data, error } = await supabase
     .from("sermons")
@@ -27,6 +29,7 @@ export const getSermonsSection = async () => {
   return data;
 };
 
+// Retrieves all sermons ordered from newest to oldest.
 export const getSermonsPage = async () => {
   const { data, error } = await supabase
     .from("sermons")
@@ -41,6 +44,7 @@ export const getSermonsPage = async () => {
   return data;
 };
 
+// Retrieves a single sermon by its unique ID.
 export const getSermonById = async (id: string) => {
   const { data, error } = await supabase
     .from("sermons")

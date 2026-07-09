@@ -18,6 +18,7 @@ import {
 } from "./HeroSection.styles.ts";
 
 const HeroSection = () => {
+  // Smoothly scroll to the next section of the homepage
   const scrollToNext = (): void => {
     window.scrollTo({
       top: window.innerHeight,
@@ -27,9 +28,12 @@ const HeroSection = () => {
 
   return (
     <>
+      {/* Hero section */}
       <BgImage>
+        {/* Background overlay */}
         <OverlayBgImage></OverlayBgImage>
         <HeroContent>
+          {/* Welcome message */}
           <div>
             <HeroH1>
               <p style={{ color: theme.colors.white }}>
@@ -44,7 +48,9 @@ const HeroSection = () => {
               Raising leaders that transform society.
             </HeroP>
           </div>
+          {/* Hero action buttons */}
           <HeroButton>
+            {/* Link to the Plan Your Visit page */}
             <A to="/plan">
               <HeroPlanButton
                 style={{
@@ -57,6 +63,7 @@ const HeroSection = () => {
               </HeroPlanButton>
             </A>
 
+            {/* Watch live button */}
             <A to="">
               <HeroGiveButton
                 style={{
@@ -74,6 +81,7 @@ const HeroSection = () => {
             </A>
           </HeroButton>
 
+          {/* Weekly service schedule */}
           <ThisWeek>
             <p className="thisWeekTitle">Join Us This Week</p>
 
@@ -99,7 +107,9 @@ const HeroSection = () => {
           </ThisWeek>
         </HeroContent>
 
+        {/* Scroll indicator */}
         <MoveDownArrow onClick={scrollToNext}>
+          {/* Animated arrow */}
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{

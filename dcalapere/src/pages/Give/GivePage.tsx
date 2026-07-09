@@ -8,19 +8,25 @@ import fcmb from "../../assets/images/fcmb.png";
 function GivePage() {
   return (
     <>
+      {/* Website navigation */}
       <NavBar />
 
+      {/* Main page content */}
       <main>
+        {/* Giving page container */}
         <GiveContainer>
+          {/* Page heading */}
           <div className="contactTitleContainer">
             <p className="title">Give</p>
             <p>
               Your generosity helps us touch lives, strengthen our community,
-              and advance God's purpose. <br className="desktopBreak tabBreak" />
+              and advance God's purpose.{" "}
+              <br className="desktopBreak tabBreak" />
               Every gift makes an eternal impact.
             </p>
           </div>
 
+          {/* Scripture encouraging biblical giving */}
           <div className="bibleQuoteContainer">
             <p>
               <Quote size={40} />
@@ -35,6 +41,7 @@ function GivePage() {
             <p className="bibleVersion">New International Version</p>
           </div>
 
+          {/* Church giving account details */}
           <div className="accountContainer">
             <p className="title">Ready to Give?</p>
             <p>
@@ -42,7 +49,9 @@ function GivePage() {
               doing.
             </p>
 
+            {/* Bank account information */}
             <div className="accountBoxGrid">
+              {/* Tithe account */}
               <div className="accountDetailsContainer">
                 <div>
                   <p>TITHE</p>
@@ -58,6 +67,7 @@ function GivePage() {
                 />
               </div>
 
+              {/* Projects account */}
               <div className="accountDetailsContainer">
                 <div>
                   <p>PROJECTS</p>
@@ -75,14 +85,17 @@ function GivePage() {
             </div>
           </div>
 
+          {/* Contact section for giving enquiries */}
           <div className="questionContainer">
             <p className="questionTitle">Questions About Giving?</p>
             <p className="questionDetail">
               Our team is glad to serve you. If you have any questions about
-              giving <br className="desktopBreak"/>
+              giving <br className="desktopBreak" />
               or how your seed supports the work of the ministry, feel free to
               reach out at any time.
             </p>
+
+            {/* Link to the contact page */}
             <A to="/contact">
               <span>Contact Us</span>
             </A>
@@ -90,6 +103,7 @@ function GivePage() {
         </GiveContainer>
       </main>
 
+      {/* Website footer */}
       <Footer />
     </>
   );

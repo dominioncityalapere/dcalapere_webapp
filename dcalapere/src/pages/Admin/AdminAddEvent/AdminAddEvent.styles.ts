@@ -24,10 +24,9 @@ export const AddEventContainer = styled.div`
 
   form {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-rows: auto;
     gap: 1rem;
     padding-top: 0.6rem;
-    width: 100%;
 
     .full {
       position: relative;
@@ -47,11 +46,7 @@ export const AddEventContainer = styled.div`
         pointer-events: none;
       }
 
-      .eventTitle {
-        width: 100%;
-      }
-
-      .eventDescription {
+      .eventforms {
         width: 100%;
       }
     }

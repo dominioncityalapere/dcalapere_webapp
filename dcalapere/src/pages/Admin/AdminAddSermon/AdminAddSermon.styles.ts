@@ -88,6 +88,10 @@ export const AddSermonContainer = styled.div`
       color: inherit;
     }
 
+    .eventForms {
+      width: auto;
+    }
+
     @media (min-width: 768px) {
       grid-template-columns: auto auto;
       row-gap: 1rem;

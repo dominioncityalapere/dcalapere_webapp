@@ -16,6 +16,7 @@ import {
 const EventsSection = () => {
   const [events, setEvents] = useState<EventType[]>([]);
 
+  // Fetch the latest events for the homepage section
   useEffect(() => {
     const fetchEvents = async () => {
       const data = await getEventsSection();
@@ -25,9 +26,11 @@ const EventsSection = () => {
     fetchEvents();
   }, []);
 
+  // Highlight the latest event and display the remaining events in the sidebar
   const featuredEvent = events[0];
   const sideEvents = events.slice(1);
 
+  // Format event dates into a readable format
   const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString("en-US", {
       weekday: "long",
@@ -37,6 +40,7 @@ const EventsSection = () => {
     });
   };
 
+  // Convert 24-hour time into 12-hour AM/PM format
   const formatTime = (time: string) => {
     const [hours, minutes] = time.split(":");
 
@@ -50,16 +54,20 @@ const EventsSection = () => {
   };
 
   return (
+    // Events section
     <BgColor>
+      {/* Featured event banner */}
       <EventsContent thumbnail={featuredEvent?.thumbnail || ""}>
         <p className="sectionTitle">Upcoming Events</p>
         <p className="sectionSubTitle">
           Join us for fellowship, growth, and community
         </p>
 
+        {/* Featured event and sidebar layout */}
         <div className="eventWrapper">
           {featuredEvent && (
             <div className="eventDetail">
+              {/* Badge identifying the latest event */}
               <p
                 style={{
                   background: theme.colors.yellow,
@@ -76,6 +84,7 @@ const EventsSection = () => {
               </p>
               <p className="eventTitle">{featuredEvent.title}</p>
 
+              {/* Featured event details */}
               <div className="numberDetail">
                 <Calendar style={{ width: "1rem" }} />
                 <p className="eventDate">{formatDate(featuredEvent.date)}</p>
@@ -95,6 +104,7 @@ const EventsSection = () => {
                 <p>{featuredEvent.description}</p>
               </div>
 
+              {/* Link to the full events page */}
               <A to="/events">
                 <LearnButton
                   style={{
@@ -107,10 +117,11 @@ const EventsSection = () => {
             </div>
           )}
 
-          {/* Sidebar Events */}
+          {/* Remaining upcoming events */}
           <div
             style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
+            {/* Sidebar event card */}
             {sideEvents.map((event) => (
               <div key={event.id} className="eventDetailSidebar">
                 <div className="imageAlignText">
@@ -120,6 +131,7 @@ const EventsSection = () => {
                     alt={event.title}
                   />
 
+                  {/* Sidebar event information */}
                   <div className="textSidebar">
                     <p className="eventTitleSidebar">{event.title}</p>
 
@@ -156,6 +168,7 @@ const EventsSection = () => {
         </div>
       </EventsContent>
 
+      {/* View all events button */}
       <AEvents>
         <A to="/events">
           <EventsButton

@@ -204,7 +204,7 @@ const AdminAddEvent = () => {
           <p>DC Alapere</p>
         </div>
         <div>
-          <A to="/dcalapere-access-26" style={{ paddingRight: "1rem" }}>
+          <A to="/dcalapere-access-26" style={{ paddingRight: "0.5rem" }}>
             <button>Back</button>
           </A>
           <button onClick={logout}>Log out</button>
@@ -239,7 +239,7 @@ const AdminAddEvent = () => {
         {/* Event title with live character counter */}
         <div className="full">
           <input
-            className="eventTitle"
+            className="eventforms"
             placeholder="Title"
             value={eventTitle}
             onChange={(e) => setEventTitle(e.target.value)}
@@ -252,7 +252,9 @@ const AdminAddEvent = () => {
 
         {/* Event date */}
         <input
+          className="eventforms"
           type="date"
+          placeholder="Date"
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
           required
@@ -260,7 +262,9 @@ const AdminAddEvent = () => {
 
         {/* Event time */}
         <input
+          className="eventforms"
           type="time"
+          placeholder="Time"
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
           required
@@ -290,7 +294,7 @@ const AdminAddEvent = () => {
         {/* Event description */}
         <div className="full">
           <textarea
-            className="eventDescription"
+            className="eventforms"
             placeholder="Description"
             value={eventDescription}
             onChange={(e) => setEventDescription(e.target.value)}

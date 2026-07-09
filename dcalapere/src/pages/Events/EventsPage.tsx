@@ -45,9 +45,12 @@ function EventsPage() {
 
   return (
     <>
+      {/* Website navigation */}
       <NavBar />
 
+      {/* Main page content */}
       <main>
+        {/* Events page container */}
         <EventContainer>
           <div className="eventTitle">
             <p className="title">Upcoming Events</p>
@@ -57,17 +60,21 @@ function EventsPage() {
             </p>
           </div>
 
+          {/* Featured and upcoming events */}
           <div className="eventDetail">
             {featuredEvent && (
               <div className="full">
                 <div className="eventDetailA">
+                  {/* Featured event image */}
                   <img
                     className="eventImageSidebar"
                     src={featuredEvent.thumbnail}
                     alt={featuredEvent.title}
                   />
 
+                  {/* Featured event details */}
                   <div className="eventInfoFlex">
+                    {/* Badge highlighting the latest event */}
                     <p
                       style={{
                         background: theme.colors.primary,
@@ -83,6 +90,7 @@ function EventsPage() {
 
                     <p className="eventTitleDetail">{featuredEvent.title}</p>
 
+                    {/* Featured event date */}
                     <div className="numberDetail">
                       <Calendar style={{ width: "1rem" }} />
                       <p className="eventDate">
@@ -90,6 +98,7 @@ function EventsPage() {
                       </p>
                     </div>
 
+                    {/* Featured event time */}
                     <div className="numberDetail">
                       <Clock4 style={{ width: "1rem" }} />
                       <p className="dayTime">
@@ -97,11 +106,13 @@ function EventsPage() {
                       </p>
                     </div>
 
+                    {/* Featured event location */}
                     <div className="numberDetail">
                       <MapPin style={{ width: "1rem" }} />
                       <p>{featuredEvent.location}</p>
                     </div>
 
+                    {/* Featured event description */}
                     <div className="numberDetail">
                       <p>{featuredEvent.description}</p>
                     </div>
@@ -110,32 +121,39 @@ function EventsPage() {
               </div>
             )}
 
+            {/* Remaining upcoming events */}
             {sideEvents.map((event) => (
               <div key={event.id} className="eventDetailB">
+                {/* Event thumbnail */}
                 <img
                   className="eventImageSidebar"
                   src={event.thumbnail}
                   alt={event.title}
                 />
 
+                {/* Event information */}
                 <div>
                   <p className="eventTitleDetail">{event.title}</p>
 
+                  {/* Event date */}
                   <div className="numberDetail">
                     <Calendar style={{ width: "1rem" }} />
                     <p className="eventDate">{formatDate(event.date)}</p>
                   </div>
 
+                  {/* Event time */}
                   <div className="numberDetail">
                     <Clock4 style={{ width: "1rem" }} />
                     <p className="dayTime"> {formatTime(event.time)}</p>
                   </div>
 
+                  {/* Event location */}
                   <div className="numberDetail">
                     <MapPin style={{ width: "1rem" }} />
                     <p>{event.location}</p>
                   </div>
 
+                  {/* Event description */}
                   <div className="numberDetail">
                     <p>{event.description}</p>
                   </div>
@@ -144,6 +162,7 @@ function EventsPage() {
             ))}
           </div>
 
+          {/* Call-to-action section */}
           <div
             style={{ background: theme.colors.borderLine, padding: "5rem 0" }}
           >
@@ -163,6 +182,7 @@ function EventsPage() {
         </EventContainer>
       </main>
 
+      {/* Website footer */}
       <Footer />
     </>
   );
