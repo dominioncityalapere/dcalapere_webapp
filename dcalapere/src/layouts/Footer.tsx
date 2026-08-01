@@ -110,6 +110,15 @@ const Footer = () => {
               <span>About Us</span>
             </A>
           </div>
+          <div>
+            <a
+              href="https://t.me/dominionmandate1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span> Join our Telegram Channel</span>
+            </a>
+          </div>
         </div>
       </FooterContentA>
 

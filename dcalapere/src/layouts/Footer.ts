@@ -127,6 +127,16 @@ export const FooterContentA = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      color: ${theme.colors.grey};
+
+      &:hover {
+        color: ${theme.colors.white};
+      }
+    }
   }
 
   @media (min-width: 768px) {

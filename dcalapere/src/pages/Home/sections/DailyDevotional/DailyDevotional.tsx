@@ -15,6 +15,7 @@ import {
 
 const DailyDevotional = () => {
   const [messages, setMessages] = useState<Devotional[]>([]);
+  const [showFullText, setShowFullText] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   // Fetch the latest devotional from Supabase when the component mounts
@@ -181,11 +182,28 @@ const DailyDevotional = () => {
         const reading = lines[3]; // BIBLE READING...
         const verse = lines[4]; // "And because you..
 
+        const body = lines.slice(5).join("\n\n");
+
+        // Normalize all line endings
+        const normalizedBody = body.replace(/\r\n/g, "\n");
+
+        // Split into paragraphs while removing empty ones
+        const bodyParagraphs = normalizedBody
+          .split(/\n{2,}/)
+          .map((paragraph) => paragraph.trim())
+          .filter(Boolean);
+
         // Show a short preview of the devotional body
-        const previewText = lines.slice(5, 6); // short preview
+        const previewText = showFullText
+          ? bodyParagraphs
+          : bodyParagraphs.slice(0, 1);
 
         // Extract the day of the month for the date badge
         const dayNumber = fullDate.match(/\d+/)?.[0] || "";
+
+        console.log(lines);
+        console.log(body);
+        console.log(bodyParagraphs);
 
         return (
           <DevotionalBgColor>
@@ -222,23 +240,27 @@ const DailyDevotional = () => {
 
               {/* Devotional preview */}
               <div>
-                {previewText.map((previewText: string, index: number) => (
-                  <p key={index}>{previewText}</p>
+                {previewText.map((paragraph: string, index: number) => (
+                  <p
+                    key={index}
+                    style={{
+                      marginBottom: "0.7rem",
+                    }}
+                  >
+                    {paragraph}
+                  </p>
                 ))}
               </div>
 
               {/* Link to the full devotional on Telegram */}
               <div>
-                <A
-                  href="https://t.me/dominionmandate1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <A>
                   <span
                     className="readMore"
+                    onClick={() => setShowFullText(!showFullText)}
                     style={{ color: theme.colors.primary }}
                   >
-                    Read More..
+                    {showFullText ? "Read Less" : "Read More..."}
                   </span>
                 </A>
               </div>
