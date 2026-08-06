@@ -64,7 +64,6 @@ export const SectionSubTitle = styled.div`
 
 export const SermonBoxContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   gap: 2rem;
   justify-content: center;
   text-align: left;
