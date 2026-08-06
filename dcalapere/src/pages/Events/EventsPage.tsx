@@ -22,6 +22,10 @@ function EventsPage() {
   const featuredEvent = events[0];
   const sideEvents = events.slice(1);
 
+  // Convert the event title to uppercase for consistent display.
+  const toUpperCase = (text: string) => text.toUpperCase();
+
+  // Format event dates into a readable format
   const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString("en-US", {
       weekday: "long",
@@ -31,6 +35,7 @@ function EventsPage() {
     });
   };
 
+  // Convert 24-hour time into 12-hour AM/PM format
   const formatTime = (time: string) => {
     const [hours, minutes] = time.split(":");
 
@@ -67,7 +72,7 @@ function EventsPage() {
                 <div className="eventDetailA">
                   {/* Featured event image */}
                   <img
-                    className="eventImageSidebar"
+                    className="eventImageLatest"
                     src={featuredEvent.thumbnail}
                     alt={featuredEvent.title}
                   />
@@ -88,7 +93,9 @@ function EventsPage() {
                       Latest Event
                     </p>
 
-                    <p className="eventTitleDetail">{featuredEvent.title}</p>
+                    <p className="eventTitleDetail">
+                      {toUpperCase(featuredEvent.title)}
+                    </p>
 
                     {/* Featured event date */}
                     <div className="numberDetail">
@@ -126,14 +133,14 @@ function EventsPage() {
               <div key={event.id} className="eventDetailB">
                 {/* Event thumbnail */}
                 <img
-                  className="eventImageSidebar"
+                  className="eventImageOther"
                   src={event.thumbnail}
                   alt={event.title}
                 />
 
                 {/* Event information */}
                 <div>
-                  <p className="eventTitleDetail">{event.title}</p>
+                  <p className="eventTitleDetail">{toUpperCase(event.title)}</p>
 
                   {/* Event date */}
                   <div className="numberDetail">

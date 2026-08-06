@@ -71,7 +71,7 @@ export const EventContainer = styled.div`
         padding-bottom: 0;
       }
 
-      .eventImageSidebar {
+      .eventImageLatest {
         border-radius: 2rem 2rem 0 0;
         width: 100%;
 
@@ -122,9 +122,17 @@ export const EventContainer = styled.div`
       border-radius: 2rem;
       color: ${theme.colors.black};
 
-      .eventImageSidebar {
+      .eventImageOther {
         border-radius: 2rem 2rem 0 0;
         width: 100%;
+
+        @media (min-width: 1024px) {
+          border-radius: 2rem 2rem 0 0;
+          width: 24.6875rem; /* 395px */
+          height: 13.875rem; /* 222px */
+          object-fit: cover;
+          object-position: center top;
+        }
       }
 
       .eventTitleDetail {

@@ -30,6 +30,9 @@ const EventsSection = () => {
   const featuredEvent = events[0];
   const sideEvents = events.slice(1);
 
+  // Convert the event title to uppercase for consistent display.
+  const toUpperCase = (text: string) => text.toUpperCase();
+
   // Format event dates into a readable format
   const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString("en-US", {
@@ -82,7 +85,7 @@ const EventsSection = () => {
               >
                 Latest Event
               </p>
-              <p className="eventTitle">{featuredEvent.title}</p>
+              <p className="eventTitle">{toUpperCase(featuredEvent.title)}</p>
 
               {/* Featured event details */}
               <div className="numberDetail">
@@ -133,7 +136,9 @@ const EventsSection = () => {
 
                   {/* Sidebar event information */}
                   <div className="textSidebar">
-                    <p className="eventTitleSidebar">{event.title}</p>
+                    <p className="eventTitleSidebar">
+                      {toUpperCase(event.title)}
+                    </p>
 
                     <div className="numberDetailSidebar">
                       <div style={{ display: "flex", gap: "0.5rem" }}>
