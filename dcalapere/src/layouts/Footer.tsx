@@ -112,7 +112,7 @@ const Footer = () => {
           </div>
           <div>
             <a
-              href="https://t.me/dominionmandate1"
+              href="https://t.me/dominioncityglobal"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -64,7 +64,7 @@ export const EventsContent = styled.div<EventSectionProps>`
 
   .eventDetail {
     background-image:
-      linear-gradient(rgba(37, 64, 185, 0.85)),
+      linear-gradient(rgba(37, 64, 185, 0.75)),
       url(${(props) => props.thumbnail});
 
     background-size: cover;
@@ -158,7 +158,12 @@ export const EventsContent = styled.div<EventSectionProps>`
       border-radius: 0.5rem;
 
       @media (min-width: 768px) {
-        width: 15rem;
+        width: 16.875rem;
+        height: 9.5rem;
+        border-radius: 1rem;
+        object-fit: cover;
+        object-position: center top;
+        flex-shrink: 0;
         padding: 1rem;
         border-radius: 2rem;
       }
