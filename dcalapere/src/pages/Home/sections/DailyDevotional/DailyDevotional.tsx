@@ -17,15 +17,23 @@ const DailyDevotional = () => {
   const [messages, setMessages] = useState<Devotional[]>([]);
   const [showFullText, setShowFullText] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch the latest devotional from Supabase when the component mounts
   useEffect(() => {
     const loadDevotional = async () => {
       try {
+        setIsLoading(true);
+        setError(null);
+
         const data = await getLatestDevotional();
         setMessages(data ? [data] : []);
       } catch (error) {
         console.error(error);
+        setError("Unable to load today's devotional.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -168,6 +176,40 @@ const DailyDevotional = () => {
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
   };
+
+  if (isLoading) {
+    return (
+      <DevotionalBgColor>
+        <DevotionalContent>
+          <p style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            Loading devotional...
+          </p>
+        </DevotionalContent>
+      </DevotionalBgColor>
+    );
+  }
+
+  if (error) {
+    return (
+      <DevotionalBgColor>
+        <DevotionalContent>
+          <p style={{ textAlign: "center", padding: "10rem 2rem" }}>{error}</p>
+        </DevotionalContent>
+      </DevotionalBgColor>
+    );
+  }
+
+  if (messages.length === 0) {
+    return (
+      <DevotionalBgColor>
+        <DevotionalContent>
+          <p style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            No devotional available right now.
+          </p>
+        </DevotionalContent>
+      </DevotionalBgColor>
+    );
+  }
 
   return (
     <>

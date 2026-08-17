@@ -15,12 +15,24 @@ import {
 
 const EventsSection = () => {
   const [events, setEvents] = useState<EventType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch the latest events for the homepage section
   useEffect(() => {
     const fetchEvents = async () => {
-      const data = await getEventsSection();
-      setEvents(data);
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const data = await getEventsSection();
+        setEvents(data);
+      } catch (error) {
+        console.error(error);
+        setError("Unable to load events.");
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchEvents();
@@ -55,6 +67,57 @@ const EventsSection = () => {
 
     return `${formattedHour}:${minutes}${period}`;
   };
+
+  if (isLoading) {
+    return (
+      <BgColor>
+        <EventsContent thumbnail="">
+          <p className="sectionTitle">Upcoming Events</p>
+          <p className="sectionSubTitle">
+            Join us for fellowship, growth, and community
+          </p>
+
+          <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            <p>Loading events...</p>
+          </div>
+        </EventsContent>
+      </BgColor>
+    );
+  }
+
+  if (error) {
+    return (
+      <BgColor>
+        <EventsContent thumbnail="">
+          <p className="sectionTitle">Upcoming Events</p>
+          <p className="sectionSubTitle">
+            Join us for fellowship, growth, and community
+          </p>
+
+          <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            <p>{error}</p>
+          </div>
+        </EventsContent>
+      </BgColor>
+    );
+  }
+
+  if (events.length === 0) {
+    return (
+      <BgColor>
+        <EventsContent thumbnail="">
+          <p className="sectionTitle">Upcoming Events</p>
+          <p className="sectionSubTitle">
+            Join us for fellowship, growth, and community
+          </p>
+
+          <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            <p>No upcoming events available.</p>
+          </div>
+        </EventsContent>
+      </BgColor>
+    );
+  }
 
   return (
     // Events section

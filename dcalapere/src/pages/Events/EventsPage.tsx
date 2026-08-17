@@ -9,11 +9,23 @@ import { theme } from "../../styles/theme";
 
 function EventsPage() {
   const [events, setEvents] = useState<EventType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const data = await getEvents();
-      setEvents(data);
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const data = await getEvents();
+        setEvents(data);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+        setError("Failed to load events.");
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchEvents();
@@ -47,6 +59,84 @@ function EventsPage() {
 
     return `${formattedHour}:${minutes}${period}`;
   };
+
+  if (isLoading) {
+    return (
+      <>
+        <NavBar />
+
+        <main>
+          <EventContainer>
+            <div className="eventTitle">
+              <p className="title">Upcoming Events</p>
+              <p>
+                Join us for fellowship, worship, and community activities.
+                There's something for everyone!
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+              <p>Loading events...</p>
+            </div>
+          </EventContainer>
+        </main>
+
+        <Footer />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <NavBar />
+
+        <main>
+          <EventContainer>
+            <div className="eventTitle">
+              <p className="title">Upcoming Events</p>
+              <p>
+                Join us for fellowship, worship, and community activities.
+                There's something for everyone!
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+              <p>{error}</p>
+            </div>
+          </EventContainer>
+        </main>
+
+        <Footer />
+      </>
+    );
+  }
+
+  if (events.length === 0) {
+    return (
+      <>
+        <NavBar />
+
+        <main>
+          <EventContainer>
+            <div className="eventTitle">
+              <p className="title">Upcoming Events</p>
+              <p>
+                Join us for fellowship, worship, and community activities.
+                There's something for everyone!
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+              <p>No upcoming events available.</p>
+            </div>
+          </EventContainer>
+        </main>
+
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>

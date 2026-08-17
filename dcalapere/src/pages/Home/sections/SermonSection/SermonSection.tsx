@@ -20,13 +20,25 @@ import {
 
 const SermonSection = () => {
   const [sermons, setSermons] = useState<SermonsType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   // Fetch the latest sermons for the homepage
   useEffect(() => {
     const fetchSermons = async () => {
-      const data = await getSermonsSection();
-      setSermons(data);
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const data = await getSermonsSection();
+        setSermons(data);
+      } catch (error) {
+        console.error("Error fetching sermons:", error);
+        setError("Failed to load sermons.");
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchSermons();
@@ -50,6 +62,69 @@ const SermonSection = () => {
       day: "numeric",
     });
   };
+
+  if (isLoading) {
+    return (
+      <SermonBgColor>
+        <div>
+          <div>
+            <SectionTitle style={{ fontWeight: "bold" }}>
+              Recent Sermons
+            </SectionTitle>
+            <SectionSubTitle>
+              Missed a Sunday? Catch up on our latest messages
+            </SectionSubTitle>
+          </div>
+
+          <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            <p>Loading sermons...</p>
+          </div>
+        </div>
+      </SermonBgColor>
+    );
+  }
+
+  if (error) {
+    return (
+      <SermonBgColor>
+        <div>
+          <div>
+            <SectionTitle style={{ fontWeight: "bold" }}>
+              Recent Sermons
+            </SectionTitle>
+            <SectionSubTitle>
+              Missed a Sunday? Catch up on our latest messages
+            </SectionSubTitle>
+          </div>
+
+          <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            <p>{error}</p>
+          </div>
+        </div>
+      </SermonBgColor>
+    );
+  }
+
+  if (sermons.length === 0) {
+    return (
+      <SermonBgColor>
+        <div>
+          <div>
+            <SectionTitle style={{ fontWeight: "bold" }}>
+              Recent Sermons
+            </SectionTitle>
+            <SectionSubTitle>
+              Missed a Sunday? Catch up on our latest messages
+            </SectionSubTitle>
+          </div>
+
+          <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+            <p>No recent sermons available.</p>
+          </div>
+        </div>
+      </SermonBgColor>
+    );
+  }
 
   return (
     // Recent sermons section
