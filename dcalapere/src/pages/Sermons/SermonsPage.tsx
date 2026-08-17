@@ -22,14 +22,26 @@ const SermonsPage = () => {
   // Sermon data and the number of sermons currently displayed
   const [sermons, setSermons] = useState<SermonsType[]>([]);
   const [visibleCount, setVisibleCount] = useState(4);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
   // Fetch all sermons when the page loads
   useEffect(() => {
     const fetchSermons = async () => {
-      const data = await getSermonsPage();
-      setSermons(data);
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const data = await getSermonsPage();
+        setSermons(data);
+      } catch (error) {
+        console.error("Error fetching sermons:", error);
+        setError("Failed to load sermons.");
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchSermons();
@@ -62,6 +74,78 @@ const SermonsPage = () => {
   const latestVideoId = latestSermon
     ? getYoutubeId(latestSermon.youtube_url)
     : null;
+
+  if (isLoading) {
+    return (
+      <>
+        <NavBar />
+        <main>
+          <SermonContainer>
+            <div className="sermonHeader">
+              <p className="header">Sermons</p>
+              <p>
+                Missed a Sunday? Catch up on our latest messages or explore our
+                sermon archive.
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+              <p>Loading sermons...</p>
+            </div>
+          </SermonContainer>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <NavBar />
+        <main>
+          <SermonContainer>
+            <div className="sermonHeader">
+              <p className="header">Sermons</p>
+              <p>
+                Missed a Sunday? Catch up on our latest messages or explore our
+                sermon archive.
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+              <p>{error}</p>
+            </div>
+          </SermonContainer>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (sermons.length === 0) {
+    return (
+      <>
+        <NavBar />
+        <main>
+          <SermonContainer>
+            <div className="sermonHeader">
+              <p className="header">Sermons</p>
+              <p>
+                Missed a Sunday? Catch up on our latest messages or explore our
+                sermon archive.
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center", padding: "10rem 2rem" }}>
+              <p>No sermons available.</p>
+            </div>
+          </SermonContainer>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
